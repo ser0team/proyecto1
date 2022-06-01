@@ -38,7 +38,7 @@ public class Conexion {
             String strpassword = String.valueOf(passwd);
             Class<?> forName = Class.forName("com.mysql.cj.jdbc.Driver");            
             conexion = (Connection) DriverManager.getConnection("jdbc:mysql://"
-                    +host+":"+puerto+"/"+"mydb"+zoneDateTime,user, strpassword);
+                    +host+":"+puerto+"/"+"taurus"+zoneDateTime,user, strpassword);
             System.out.println(conexion);
             System.out.println("Conexion establecida con exito");            
         }
