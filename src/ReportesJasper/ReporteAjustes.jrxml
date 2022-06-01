@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteAjustes" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Fenix"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idempresa" class="java.lang.Integer"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select ajustes_compras.idajustes_compras, 
+ajustes_compras.razon_ajuste, 
+ajustes_compras.cantidad_ajuste,
+ajustes_compras.tipo_ajuste,
+ajustes_compras.fecha_ajuste,
+ajustes_compras.idcompras_producto,
+ajustes_compras.idempleado, 
+ajustes_compras.idempresa, 
+empresas.razonsocial
+from ajustes_compras, empresas where ajustes_compras.idempresa = $P{idempresa}]]>
+	</queryString>
+	<field name="idajustes_compras" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idajustes_compras"/>
+		<property name="com.jaspersoft.studio.field.label" value="idajustes_compras"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razon_ajuste" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="razon_ajuste"/>
+		<property name="com.jaspersoft.studio.field.label" value="razon_ajuste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_ajuste" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad_ajuste"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad_ajuste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_ajuste" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo_ajuste"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo_ajuste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_ajuste" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_ajuste"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_ajuste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idcompras_producto" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idcompras_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="idcompras_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idempleado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idempleado"/>
+		<property name="com.jaspersoft.studio.field.label" value="idempleado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idempresa" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idempresa"/>
+		<property name="com.jaspersoft.studio.field.label" value="idempresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ajustes_compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="razonsocial" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="razonsocial"/>
+		<property name="com.jaspersoft.studio.field.label" value="razonsocial"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empresas"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{idajustes_compras}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="3" width="721" height="24" forecolor="#B89F7D" backcolor="#000000" uuid="f24569ed-2518-465a-a480-0c195aacd180"/>
+					<textField textAdjust="StretchHeight">
+						<reportElement style="SubTitle" x="2" y="0" width="695" height="24" forecolor="#FFFFFF" uuid="5b7282d2-5169-4db4-b85a-e2391d4d4e66"/>
+						<textElement>
+							<font fontName="SansSerif" size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{idajustes_compras}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="196" y="28" width="100" height="26" uuid="a60bb822-d7da-4d29-87e3-37e4b46d8771"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="SansSerif" size="9"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{cantidad_ajuste}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="396" y="28" width="100" height="26" uuid="0b8280e5-465c-4e62-a731-07c4ad0f2857"/>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="SansSerif" size="9"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{fecha_ajuste}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<rectangle>
+					<reportElement x="725" y="3" width="77" height="24" backcolor="#666666" uuid="70e1e931-2edd-4f3d-b09b-b9da04709f25"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{razon_ajuste}]]></groupExpression>
+		<groupHeader>
+			<band height="35">
+				<textField>
+					<reportElement positionType="Float" x="0" y="4" width="196" height="26" forecolor="#000000" uuid="c09ae599-41a3-4b19-8a1e-72af405a3627"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{razon_ajuste}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="296" y="4" width="100" height="26" uuid="3ea13dab-adb6-4901-a4eb-fcfec3ec6c4a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo_ajuste}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="496" y="4" width="100" height="26" uuid="8acac104-352b-43f6-b7c5-61fed89c2228"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idcompras_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="596" y="4" width="100" height="26" uuid="fc2d9e82-9e5b-41d0-b551-63f433aa8310"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idempleado}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="696" y="4" width="100" height="26" uuid="c0834047-ffab-4cfa-9c53-5fe3b86f3927"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idempresa}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="cantidad_ajuste">
+		<groupExpression><![CDATA[$F{cantidad_ajuste}]]></groupExpression>
+	</group>
+	<group name="tipo_ajuste">
+		<groupExpression><![CDATA[$F{tipo_ajuste}]]></groupExpression>
+	</group>
+	<group name="fecha_ajuste">
+		<groupExpression><![CDATA[$F{fecha_ajuste}]]></groupExpression>
+	</group>
+	<group name="idcompras_producto">
+		<groupExpression><![CDATA[$F{idcompras_producto}]]></groupExpression>
+	</group>
+	<group name="idempleado">
+		<groupExpression><![CDATA[$F{idempleado}]]></groupExpression>
+	</group>
+	<group name="idempresa">
+		<groupExpression><![CDATA[$F{idempresa}]]></groupExpression>
+	</group>
+	<group name="razonsocial">
+		<groupExpression><![CDATA[$F{razonsocial}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="d8d9e644-3a32-491d-97cb-a277aff17133"/>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="cfa21334-0634-4605-9ea7-aca4981f67e4"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tu mejor opción en carnes]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="0" width="370" height="66" forecolor="#FFFFFF" uuid="654f5baf-6843-4ecd-8a4c-4d1003b726a5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="35"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{razonsocial}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="b0c895f6-6dbd-477d-9858-9ad66af087e1"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="a33fce3b-20c1-4696-873a-fe134d1e7d88"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="32" width="196" height="18" uuid="9e67e4da-081f-48a1-9642-769dfabf5576"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<text><![CDATA[Razón ajuste]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="196" y="32" width="100" height="18" uuid="e7af6ca5-ae99-4197-a0ff-12d8d6701b2c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<text><![CDATA[Cantidad ajuste]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="396" y="32" width="100" height="18" uuid="84d66f06-3045-42a9-b6b0-d3c0225e54a4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9"/>
+					</textElement>
+					<text><![CDATA[Fecha ajuste]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="720" y="0" width="76" height="66" uuid="6fcd34bb-bffc-43f8-8bba-ee0542167b65"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="296" y="0" width="100" height="18" uuid="e8522aad-2fa8-463a-96d3-02032873d3be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Tipo ajuste]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="1" width="100" height="17" uuid="5103af72-300a-4dc7-bb7a-bde852447ec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Id Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="596" y="1" width="100" height="17" uuid="aec5d410-2017-4b1c-b59b-950d35c0c5c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Id Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="696" y="0" width="100" height="18" uuid="cb8fa8d3-65db-435f-9a55-5671486a7ca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[Id Empresa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="34a2ae4b-4055-476b-8676-d499f6af510b"/>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="501ac6c4-e9d4-43cb-ba6b-7f2f44394cf3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="ffb10ec8-0371-4545-8eaa-96d62ad3cec0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="b5521ea6-5f36-4864-856f-58d0bcd011f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="e625ea3c-1741-4cfe-81cf-fbbdd00162c8"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="0c9f7e91-d3f5-47f9-82b7-0b2b3a43a5d6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
