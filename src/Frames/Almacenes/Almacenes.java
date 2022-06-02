@@ -81,6 +81,25 @@ public class Almacenes extends javax.swing.JFrame {
         jtxtalmacen = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtdescripcion = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jtxtpais = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jtxtestado = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jtxtmunicipio = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jtxtcodpos = new javax.swing.JTextField();
+        jtxtcolonia = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jtxtcalle = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jtxtnoext = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jtxtnoint = new javax.swing.JTextField();
+        jdfecha = new com.toedter.calendar.JDateChooser();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtalmacenes = new javax.swing.JTable();
@@ -222,6 +241,15 @@ public class Almacenes extends javax.swing.JFrame {
         jtxtdescripcion.setRows(5);
         jScrollPane1.setViewportView(jtxtdescripcion);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("País:");
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Estado:");
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Municipio:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -230,10 +258,27 @@ public class Almacenes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtxtalmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtxtalmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtxtpais))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtxtmunicipio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtxtestado))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,10 +290,120 @@ public class Almacenes extends javax.swing.JFrame {
                     .addComponent(jtxtalmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtxtpais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jtxtestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxtmunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2);
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Cod. Postal:");
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Colonia:");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Calle:");
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("No. Exterior:");
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("No. Interior:");
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Fecha alta:");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtcodpos))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtcolonia)
+                            .addComponent(jtxtcalle)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtnoext)
+                            .addComponent(jtxtnoint)
+                            .addComponent(jdfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxtcodpos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jtxtcolonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jtxtcalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jtxtnoext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jtxtnoint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jdfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         jTabbedPane1.addTab("Registro de Almacenes", jPanel1);
 
@@ -286,14 +441,14 @@ public class Almacenes extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -395,7 +550,7 @@ public class Almacenes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -413,7 +568,9 @@ public class Almacenes extends javax.swing.JFrame {
                     Menu.idusu,
                     Menu.idcompania,
                     idalmacen);
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         }
         
@@ -457,7 +614,9 @@ public class Almacenes extends javax.swing.JFrame {
                     Menu.idusu,
                     Menu.idcompania,
                     idalmacen);
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         }
         
@@ -469,7 +628,9 @@ public class Almacenes extends javax.swing.JFrame {
             jtm.jTextAreaMessage("No se ha seleccionado almacen");
         }else{
             alm.jbeliminar(idalmacen, Menu.idcompania);
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         }
         
@@ -477,7 +638,9 @@ public class Almacenes extends javax.swing.JFrame {
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-        alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+        alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
         alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         
     }//GEN-LAST:event_jbcancelarActionPerformed
@@ -487,11 +650,23 @@ public class Almacenes extends javax.swing.JFrame {
         if(jtxtalmacen.getText().equals("")){
             jtm.jTextAreaMessage("Existen campos vacios");
         }else{
+            java.sql.Date fechaalta = new java.sql.Date(jdfecha.getDate().getTime());
             alm.jbguardar(jtxtalmacen.getText(), 
                     jtxtdescripcion.getText(),
+                    jtxtpais.getText(),
+                    jtxtestado.getText(),
+                    jtxtmunicipio.getText(),
+                    jtxtcodpos.getText(),
+                    jtxtcolonia.getText(),
+                    jtxtcalle.getText(),
+                    jtxtnoext.getText(),
+                    jtxtnoint.getText(),
+                    fechaalta,
                     Menu.idusu,
                     Menu.idcompania);
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
             
         }
@@ -503,16 +678,33 @@ public class Almacenes extends javax.swing.JFrame {
         if(jtxtalmacen.getText().equals("")){
             jtm.jTextAreaMessage("Existen campos vacios");
         }else{
+            java.sql.Date fechaalta = new java.sql.Date(jdfecha.getDate().getTime());
             alm.jbguardar(jtxtalmacen.getText(), 
                     jtxtdescripcion.getText(),
+                    jtxtpais.getText(),
+                    jtxtestado.getText(),
+                    jtxtmunicipio.getText(),
+                    jtxtcodpos.getText(),
+                    jtxtcolonia.getText(),
+                    jtxtcalle.getText(),
+                    jtxtnoext.getText(),
+                    jtxtnoint.getText(),
+                    fechaalta,
                     Menu.idusu,
                     Menu.idcompania);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
+            alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
+            
         }
         
     }//GEN-LAST:event_jmi_guardarActionPerformed
 
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
-        alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+        alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
         alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
     }//GEN-LAST:event_jmi_cancelarActionPerformed
 
@@ -522,7 +714,9 @@ public class Almacenes extends javax.swing.JFrame {
             jtm.jTextAreaMessage("No se ha seleccionado almacen");
         }else{
             alm.jbeliminar(idalmacen, Menu.idcompania);
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         }
         
@@ -564,7 +758,9 @@ public class Almacenes extends javax.swing.JFrame {
                     Menu.idusu, 
                     Menu.idcompania, 
                     Integer.parseInt(jtalmacenes.getValueAt(jtalmacenes.getSelectedRow(), 0).toString()));
-            alm.jbcancelar(jtxtalmacen, jtxtdescripcion);
+            alm.jbcancelar(jtxtalmacen, jtxtdescripcion, jtxtpais, jtxtestado, 
+                    jtxtmunicipio, jtxtcodpos, jtxtcolonia, jtxtcalle, jtxtnoext, 
+                    jtxtnoint, jdfecha);
             alm.mostrarRegistros(jtalmacenes, 0, Menu.idcompania);
         }
         
@@ -601,10 +797,20 @@ public class Almacenes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar.Separator jSeparator2;
@@ -624,6 +830,7 @@ public class Almacenes extends javax.swing.JFrame {
     public static javax.swing.JButton jbmodificar;
     public static javax.swing.JButton jbreporte;
     private javax.swing.JLabel jbsalir;
+    private com.toedter.calendar.JDateChooser jdfecha;
     public static javax.swing.JMenu jmacciones;
     public static javax.swing.JMenuItem jmi_cancelar;
     public static javax.swing.JMenuItem jmi_eliminar;
@@ -635,7 +842,15 @@ public class Almacenes extends javax.swing.JFrame {
     public static javax.swing.JMenu jmreporte;
     private javax.swing.JTable jtalmacenes;
     private javax.swing.JTextField jtxtalmacen;
+    private javax.swing.JTextField jtxtcalle;
+    private javax.swing.JTextField jtxtcodpos;
+    private javax.swing.JTextField jtxtcolonia;
     private javax.swing.JTextArea jtxtdescripcion;
+    private javax.swing.JTextField jtxtestado;
+    private javax.swing.JTextField jtxtmunicipio;
+    private javax.swing.JTextField jtxtnoext;
+    private javax.swing.JTextField jtxtnoint;
+    private javax.swing.JTextField jtxtpais;
     // End of variables declaration//GEN-END:variables
 
     @Override
