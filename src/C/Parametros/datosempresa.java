@@ -44,18 +44,18 @@ public class datosempresa {
             gs.setTelefono(telefono);
             gs.setCorreo(correo);
             gs.setPagina(pagina);
-            String sql = "insert into empresas(razonsocial, rfc, pais, estado, "
-                    + "municipio, colonia, direccion, noext, noint, "
-                    + "codpos, telefono, correo, pagina)values('"+gs.getRazon()
+            String sql = "insert into empresas(rznscl, rfc, ps, std, "
+                    + "mncp, cln, cdps, cln, cll, nmrxtrr, nmrntrr, tlfn, crr, "
+                    + "pgn)values('"+gs.getRazon()
                     +"','"+gs.getRfc()
                     +"','"+gs.getPais()
                     +"','"+gs.getEstado()
                     +"','"+gs.getMunicipio()
                     +"','"+gs.getColonia()
+                    +"','"+gs.getCodpos()
                     +"','"+gs.getDireccion()
                     +"','"+gs.getNoext()
-                    +"','"+gs.getNoint()
-                    +"','"+gs.getCodpos()
+                    +"','"+gs.getNoint()                    
                     +"','"+gs.getTelefono()
                     +"','"+gs.getCorreo()
                     +"','"+gs.getPagina()+"')";
@@ -104,9 +104,8 @@ public class datosempresa {
     }
     
     public void jbmodificar(String razon, String rfc, String pais, String estado,
-            String municipio, String colonia, String direccion, String noext, 
-            String noint, String codpos, String telefono, String correo, String pagina,
-            int jtidrazon){
+            String municipio, String codpos, String colonia, String calle, String noext, 
+            String noint,  String telefono, String correo, String pagina, int jtidrazon){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
             gs.setRazon(razon);
@@ -114,27 +113,28 @@ public class datosempresa {
             gs.setPais(pais);
             gs.setEstado(estado);
             gs.setMunicipio(municipio);
-            gs.setColonia(colonia);
-            gs.setDireccion(direccion);
-            gs.setNoext(noext);
-            gs.setNoint(noint);
             gs.setCodpos(codpos);
+            gs.setColonia(colonia);
+            gs.setDireccion(calle);
+            gs.setNoext(noext);
+            gs.setNoint(noint);            
             gs.setTelefono(telefono);
             gs.setCorreo(correo);
             gs.setPagina(pagina);
-            String sql = "update empresas set razonsocial='"+gs.getRazon()
+            
+            String sql = "update empresas set rznscl='"+gs.getRazon()
                     +"', rfc='"+gs.getRfc()
-                    +"', pais='"+gs.getPais()
-                    +"', estado='"+gs.getEstado()
-                    +"', municipio='"+gs.getMunicipio()
-                    +"', colonia='"+gs.getColonia()
-                    +"', direccion='"+gs.getDireccion()
-                    +"', noext='"+gs.getNoext()
-                    +"', noint='"+gs.getNoint()
-                    +"', codpos='"+gs.getCodpos()
-                    +"', telefono='"+gs.getTelefono()
-                    +"', correo='"+gs.getCorreo()
-                    +"', pagina='"+gs.getPagina()
+                    +"', ps='"+gs.getPais()
+                    +"', std='"+gs.getEstado()
+                    +"', mncp='"+gs.getMunicipio()
+                    +"', cdps='"+gs.getCodpos()
+                    +"', cln='"+gs.getColonia()
+                    +"', cll='"+gs.getDireccion()
+                    +"', nmrntrr='"+gs.getNoext()
+                    +"', nmrntrr='"+gs.getNoint()                    
+                    +"', tlfn='"+gs.getTelefono()
+                    +"', crr='"+gs.getCorreo()
+                    +"', pgn='"+gs.getPagina()
                     +"' where idempresa='"+gs.getIdrazon()+"'";
             cc._callablestatement(sql);
             cc._executeProcedure();
@@ -154,11 +154,10 @@ public class datosempresa {
             dtm.addColumn("Pais");
             dtm.addColumn("Estado");
             dtm.addColumn("Municipio");
-            dtm.addColumn("Colonia");
-            dtm.addColumn("Dirección");
-            dtm.addColumn("No. ext");
-            dtm.addColumn("No. Int");
             dtm.addColumn("Codigo Postal");
+            dtm.addColumn("Calle");
+            dtm.addColumn("No. ext");
+            dtm.addColumn("No. Int");            
             dtm.addColumn("Teléfono");
             dtm.addColumn("Correo");
             dtm.addColumn("Pagina");
@@ -203,7 +202,7 @@ public class datosempresa {
             dtm.addColumn("Razón Social");
             dtm.addColumn("R.F.C.");
                         
-            String sql = "select idempresa, razonsocial, rfc from empresas";
+            String sql = "select idempresa, rznscl, rfc from empresas";
             cc._callablestatement(sql);
             cc._executeProcedureSelect();
             cc._resultSet();
