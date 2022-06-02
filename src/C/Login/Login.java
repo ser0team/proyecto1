@@ -27,7 +27,8 @@ public class Login {
     Instancias inst = new Instancias();
     public static int _idusu;
     public static String cont, _usu;
-    public boolean valorusuario, valorcontrasenia, usuariocomun;    
+    public boolean valorusuario, valorcontrasenia, usuariocomun, registroempresa;    
+    Frames.Login _login;
     
     public boolean verificaUsuario(String usuario, String contrasenia, String acceso){
         if(usuario.equals("")||contrasenia.equals("")){
@@ -41,7 +42,11 @@ public class Login {
                 Menu.idusu = 1000;                
                 Menu.usu = "Administrador"; 
                 Menu.rol = "Administrador"; 
-                inst.getInstanciasDatosEmpresa(); 
+                inst.getInstanciasDatosEmpresa();
+                registroempresa = true;
+                if(_login != null){
+                    _login.dispose();
+                }
             }            
         }else if(usuario.equals("Administrador")&& acceso.equals("usu")){
             if(obtenUsuario(usuario, contrasenia) == true){
@@ -64,7 +69,7 @@ public class Login {
     private boolean obtenAdministrador(String contra_){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
-            String sql="select contrasenia from administrador";
+            String sql="select cntrsn from administrador";
             cc._callablestatement(sql);
             cc._executeProcedureSelect();
             cc._resultSet();
@@ -95,7 +100,7 @@ public class Login {
     public boolean obtenUsuario(String usuario, String contrasenia){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
-            String sql="select idempleado, usuario, rol from empleados where usuario='"+usuario+"'";
+            String sql="select idusuario, sr, rl from usuarios where usuario='"+usuario+"'";
             cc._callablestatement(sql);            
             cc._executeProcedureSelect();
             if(cc._resultSet().first()==false){
@@ -132,7 +137,7 @@ public class Login {
     public boolean obtencontraseniaUsuario(String usuario, String contra){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
-            String sql="select contrasenia from empleados where usuario='"+usuario+"'";
+            String sql="select cntrsn from usuarios where sr='"+usuario+"'";
             cc._callablestatement(sql);
             cc._executeProcedureSelect();
             cc._resultSet();
