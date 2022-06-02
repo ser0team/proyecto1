@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
@@ -29,40 +30,52 @@ public class empleados {
     gs_empleados gs = new gs_empleados();
     
     public void jbguardar(String nombre, String paterno, String materno,
-            JDateChooser fnacimiento, JDateChooser fregistro, 
-            String usuario, String contrasenia, String rol, int idempresa){
+            JDateChooser fnacimiento, String direccion, String telefono,
+            String correo, int estatus, String rol, String usuario, String contrasenia, 
+            int idempleado, int idempresa){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
             
             java.sql.Date fenacimiento = new java.sql.Date(fnacimiento.getDate().getTime());
-            java.sql.Date feregistro = new java.sql.Date(fregistro.getDate().getTime());
-            
+                        
             gs.setNombre(nombre);
             gs.setPaterno(paterno);
             gs.setMaterno(materno);
             gs.setFnacimiento(fenacimiento);
-            gs.setFregistro(feregistro);                    
+            gs.setDireccion(direccion);                    
+            gs.setTelefono(telefono);
+            gs.setCorreo(correo);
+            gs.setEstatus(estatus);
+            gs.setRol(rol);
             gs.setUsuario(usuario);
             gs.setContrasenia(contrasenia);
-            gs.setRol(rol);
+            gs.setIdusuario(idempleado);
             gs.setIdcompania(idempresa);
             String sql="insert into empleados("
-                    + "nombre,"
-                    + "paterno,"
-                    + "materno,"
-                    + "fnacimiento,"
-                    + "fregistro,"                    
-                    + "usuario,"
-                    + "contrasenia,"
-                    + "rol,"
+                    + "nmbr,"
+                    + "ptrn,"
+                    + "mtrn,"
+                    + "f_ncmnt,"
+                    + "drccn,"                    
+                    + "tlfn,"
+                    + "crr,"
+                    + "stts,"
+                    + "rl,"
+                    + "sr,"
+                    + "cntrsn,"
+                    + "idusuario,"
                     + "idempresa)values('"+gs.getNombre()
                     +"','"+gs.getPaterno()
                     +"','"+gs.getMaterno()
                     +"','"+gs.getFnaciemiento()
-                    +"','"+gs.getFregistro()                    
+                    +"','"+gs.getDireccion()
+                    +"','"+gs.getTelefono()
+                    +"','"+gs.getCorreo()
+                    +"','"+gs.getEstatus()
+                    +"','"+gs.getRol()
                     +"','"+gs.getUsuario()
                     +"','"+gs.getContrasenia()
-                    +"','"+gs.getRol()
+                    +"','"+gs.getIdusuario()
                     +"','"+gs.getIdcompania()
                     +"')";
             cc._callablestatement(sql);
@@ -89,8 +102,9 @@ public class empleados {
     }
     
     public void jbmodificar(String nombre, String paterno, String materno,
-            Date fnacimiento, Date fregistro, String usuario,
-            String contrasenia, String rol, int idempresa, int idempleado){
+            Date fnacimiento, String direccion, String telefono,
+            String correo, int estatus, String rol, String usuario, String contrasenia, 
+            int idusuario, int idempresa, int idempleado){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
                 
@@ -98,23 +112,31 @@ public class empleados {
             gs.setPaterno(paterno);
             gs.setMaterno(materno);
             gs.setFnacimiento(fnacimiento);
-            gs.setFregistro(fregistro);
+            gs.setDireccion(direccion);
+            gs.setTelefono(telefono);
+            gs.setCorreo(correo);
+            gs.setEstatus(estatus);
+            gs.setRol(rol);
             gs.setUsuario(usuario);
             gs.setContrasenia(contrasenia);
-            gs.setRol(rol);
+            gs.setIdusuario(idusuario);
             gs.setIdcompania(idempresa);
             gs.setIdempleado(idempleado);
-            String sql="update empleados set nombre='"+gs.getNombre()
-                    +"',paterno='"+gs.getPaterno()
-                    +"',materno='"+gs.getMaterno()
-                    +"',fnacimiento='"+gs.getFnaciemiento()
-                    +"',fregistro='"+gs.getFregistro()
+            
+            String sql="update empleados set nmbr='"+gs.getNombre()
+                    +"',ptrn='"+gs.getPaterno()
+                    +"',mtrn='"+gs.getMaterno()
+                    +"',f_ncmnt='"+gs.getFnaciemiento()
+                    +"',drccn='"+gs.getDireccion()
+                    +"',tlfn='"+gs.getTelefono()
+                    +"',crr='"+gs.getCorreo()
+                    +"',stts='"+gs.getEstatus()
+                    +"',rl='"+gs.getRol()
                     +"',usuario='"+gs.getUsuario()
-                    +"',contrasenia='"+gs.getContrasenia()
-                    +"',rol='"+gs.getRol()
-                    +"', idempresa='"+gs.getIdcompania()
-                    +"' where idempleado='"+gs.getIdempleado()
-                    +"' and idempresa='"+gs.getIdcompania();
+                    +"',cntrsn='"+gs.getContrasenia()
+                    +"',idusuario='"+gs.getIdusuario()
+                    +"',idempresa='"+gs.getIdcompania()
+                    +"' where idempleado='"+gs.getIdempleado();
             cc._callablestatement(sql);
             cc._executeProcedure();
             cc.desconectar();
@@ -181,16 +203,17 @@ public class empleados {
     }   
     
     public void limpiar(JTextField jtnombre, JTextField jtpaterno, JTextField jtmaterno,
-            JDateChooser jdcnacimiento, JDateChooser jdcregistro, JTextField jtusuario,
-            JPasswordField jtcontrasenia, JComboBox jcbrol){
+            JDateChooser jdcnacimiento, JTextField jtdireccion, JTextField jttelefono,
+            JTextField jtcorreo, JCheckBox jchkestatus, JComboBox jcbrol){
         try{
             jtnombre.setText("");
             jtpaterno.setText("");
             jtmaterno.setText("");
             jdcnacimiento.setDate(null);
-            jdcregistro.setDate(null);
-            jtusuario.setText("");
-            jtcontrasenia.setText("");
+            jtdireccion.setText("");
+            jttelefono.setText("");
+            jtcorreo.setText("");
+            jchkestatus.setSelected(false);
             jcbrol.setSelectedIndex(0);
         }catch(Exception ex){
             jtm.jTextAreaError("ERROR: Cleaning values 005. "+ex.getMessage(), ex);
