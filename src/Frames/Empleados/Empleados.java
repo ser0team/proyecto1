@@ -19,6 +19,7 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,15 +36,16 @@ public class Empleados extends javax.swing.JFrame {
 
     Border border, margin;
     C.Empleados.empleados emp = new C.Empleados.empleados();
-    int idempleado;
-    String nombre, paterno, materno, rol, fnacimiento, fregistro, usuario;
+    int idempleado, estatus;
+    String nombre, paterno, materno, rol, fnacimiento, direccion, telefono, correo, 
+            chkestatus, usuario, contrasenia;
     File archivo;
     JFileChooser SelectArchivo;    
     reportes rep = new reportes();
     JTextAreaMessages jtm = new JTextAreaMessages();
     Image img;    
     CheckAccess chk = new CheckAccess();
-    JTableHeader th;
+    JTableHeader th;   
     
     /**
      * Creates new form Empleados
@@ -121,14 +123,22 @@ public class Empleados extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jdtcnacimiento = new com.toedter.calendar.JDateChooser();
-        jdtcregistro = new com.toedter.calendar.JDateChooser();
+        jtxtdireccion = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jtxtusuario = new javax.swing.JTextField();
+        jtxttelefono = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jtxtcontrasenia = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jcbrol = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jtxtestatus = new javax.swing.JTextField();
+        jtxtcorreo = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jchkestatus = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
+        jtxtusuario = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jtxtcontrasenia = new javax.swing.JPasswordField();
         jMenuBar2 = new javax.swing.JMenuBar();
         jmacciones = new javax.swing.JMenu();
         jmi_guardar = new javax.swing.JMenuItem();
@@ -276,13 +286,13 @@ public class Empleados extends javax.swing.JFrame {
         jtempleados.setForeground(new java.awt.Color(0, 153, 153));
         jtempleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nombre", "Paterno", "Materno", "F. Nacimiento", "F. Registro", "Usuario", "Rol"
+                "Id", "Nombre", "Paterno", "Materno", "F. Nacimiento", "Dirección", "Teléfono", "Correo", "Estatus", "Rol", "Usuario"
             }
         ));
         jtempleados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,7 +320,7 @@ public class Empleados extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -345,11 +355,9 @@ public class Empleados extends javax.swing.JFrame {
         jLabel4.setText("Fecha de Nacimiento:");
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Fecha Registro:");
+        jLabel5.setText("Dirección");
 
         jdtcnacimiento.setDateFormatString("yyyy-MM-dd");
-
-        jdtcregistro.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -370,13 +378,13 @@ public class Empleados extends javax.swing.JFrame {
                             .addComponent(jtxtpaterno)
                             .addComponent(jtxtmaterno, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jdtcregistro, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jdtcnacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jdtcnacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtdireccion)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -400,9 +408,9 @@ public class Empleados extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jdtcnacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jdtcregistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -413,11 +421,11 @@ public class Empleados extends javax.swing.JFrame {
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Usuario:");
+        jLabel8.setText("Telefono");
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Contrasenia:");
+        jLabel9.setText("Correo:");
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -425,21 +433,30 @@ public class Empleados extends javax.swing.JFrame {
 
         jcbrol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--" }));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Estatus:");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtxtusuario)
-                    .addComponent(jtxtcontrasenia)
-                    .addComponent(jcbrol, 0, 183, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxttelefono)
+                            .addComponent(jcbrol, 0, 183, Short.MAX_VALUE)
+                            .addComponent(jtxtcorreo)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtestatus)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -448,21 +465,66 @@ public class Empleados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jtxtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jtxtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(jtxtcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jcbrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jtxtestatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel3);
 
         jTabbedPane1.addTab("Registro de Empleados y Usuarios", jPanel5);
+
+        jchkestatus.setText("Activo:");
+        jchkestatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchkestatusActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Usuario:");
+
+        jLabel12.setText("Contraseña:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jchkestatus)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtxtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtxtcontrasenia)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jchkestatus)
+                    .addComponent(jLabel11)
+                    .addComponent(jtxtusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jtxtcontrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
 
         jMenuBar2.setBackground(Color.decode("#A80030")
         );
@@ -537,7 +599,8 @@ public class Empleados extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,6 +608,8 @@ public class Empleados extends javax.swing.JFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -561,7 +626,9 @@ public class Empleados extends javax.swing.JFrame {
         if(jcbrol.getSelectedItem().toString().equals("--") 
                 || jtxtnombre.getText().equals("") 
                 || jtxtpaterno.getText().equals("") 
-                || jtxtmaterno.getText().equals("")){
+                || jtxtmaterno.getText().equals("")
+                || jtxtusuario.getText().equals("")
+                || jtxtcontrasenia.getPassword().equals("")){
             jtm.jTextAreaMessage("Información invalida");
         }else{
             char[] contrasenia = jtxtcontrasenia.getPassword();
@@ -570,13 +637,17 @@ public class Empleados extends javax.swing.JFrame {
                     jtxtpaterno.getText(), 
                     jtxtmaterno.getText(), 
                     jdtcnacimiento, 
-                    jdtcregistro, 
-                    jtxtusuario.getText(),
-                    _cont,
+                    jtxtdireccion.getText(), 
+                    jtxttelefono.getText(),
+                    jtxtcorreo.getText(),
+                    estatus,
                     jcbrol.getSelectedItem().toString(),
+                    jtxtusuario.getText(),
+                    Arrays.toString(jtxtcontrasenia.getPassword()),
+                    Menu.idusu,
                     Menu.idcompania);
             emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                    jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
             emp.muestraRegistros(jtempleados, "", Menu.idcompania);
         }
         
@@ -587,30 +658,26 @@ public class Empleados extends javax.swing.JFrame {
         try {
             idempleado = Integer.parseInt(jtempleados.getValueAt(jtempleados.getSelectedRow(), 0).toString());
             nombre = jtempleados.getValueAt(jtempleados.getSelectedRow(), 1).toString();
+            jtxtnombre.setText(nombre);
             paterno = jtempleados.getValueAt(jtempleados.getSelectedRow(), 2).toString();
+            jtxtpaterno.setText(paterno);
             materno = jtempleados.getValueAt(jtempleados.getSelectedRow(), 3).toString();
+            jtxtmaterno.setText(materno);
             fnacimiento = jtempleados.getValueAt(jtempleados.getSelectedRow(), 4).toString();
-            fregistro = jtempleados.getValueAt(jtempleados.getSelectedRow(), 5).toString();
-            
             DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
             Date date1 = df1.parse(fnacimiento);
-            DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
-            Date date2 = df2.parse(fregistro);
-            
-            jtxtnombre.setText(nombre);
-            jtxtpaterno.setText(paterno);
-            jtxtmaterno.setText(materno);
             jdtcnacimiento.setDate(date1);
-            jdtcregistro.setDate(date2);
-            
-            usuario = jtempleados.getValueAt(jtempleados.getSelectedRow(), 6).toString();
-            rol = jtempleados.getValueAt(jtempleados.getSelectedRow(), 7).toString();
-
-            jtxtnombre.setText(nombre);
-            jtxtpaterno.setText(paterno);
-            jtxtmaterno.setText(materno);
-            jtxtusuario.setText(usuario);
+            direccion = jtempleados.getValueAt(jtempleados.getSelectedRow(), 5).toString();
+            telefono = jtempleados.getValueAt(jtempleados.getSelectedRow(), 6).toString();
+            correo = jtempleados.getValueAt(jtempleados.getSelectedRow(), 7).toString();
+            chkestatus = jtempleados.getValueAt(jtempleados.getSelectedRow(), 8).toString();
+            if(!chkestatus.isEmpty()){
+                jchkestatus.setSelected(true);
+            }                           
+            rol = jtempleados.getValueAt(jtempleados.getSelectedRow(), 9).toString();
             jcbrol.setSelectedItem(rol);
+            usuario = jtempleados.getValueAt(jtempleados.getSelectedRow(), 10).toString();
+            contrasenia = jtempleados.getValueAt(jtempleados.getSelectedRow(), 11).toString();
             
         } catch (ParseException ex) {
             Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -621,7 +688,7 @@ public class Empleados extends javax.swing.JFrame {
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
 
         emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
         jbguardar.setEnabled(true);
         jbeliminar.setEnabled(false);
         jbmodificar.setEnabled(false);
@@ -639,27 +706,28 @@ public class Empleados extends javax.swing.JFrame {
 
     private void jmi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_modificarActionPerformed
 
-        char[] _cont = jtxtcontrasenia.getPassword();
-        String contrasenia = String.valueOf(_cont);
         if(String.valueOf(idempleado).equals("")){
             jtm.jTextAreaMessage("No se ha seleccionado registro");
         }else{
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date nfecha = sdf.parse(jdtcnacimiento.toString());
-                java.util.Date rfecha = sdf.parse(jdtcregistro.toString());
+                java.util.Date nfecha = sdf.parse(jdtcnacimiento.toString());                
                 emp.jbmodificar(nombre,
                         paterno,
                         materno,
                         nfecha,
-                        rfecha,
+                        direccion,
+                        telefono,
+                        correo,
+                        estatus,
+                        jcbrol.getSelectedItem().toString(),
                         usuario,
                         contrasenia,
-                        jcbrol.getSelectedItem().toString(),
+                        Menu.idusu,                        
                         Menu.idcompania,
                         idempleado);
-                emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento,
-                        jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
                 emp.muestraRegistros(jtempleados, "", Menu.idcompania);
             } catch (ParseException ex) {
                 Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -675,7 +743,7 @@ public class Empleados extends javax.swing.JFrame {
         }else{
             emp.jbeliminar(idempleado, Menu.idcompania);
             emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                    jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
             emp.muestraRegistros(jtempleados, "", Menu.idcompania);
         }
         
@@ -703,7 +771,7 @@ public class Empleados extends javax.swing.JFrame {
     private void jbcancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbcancelarMouseClicked
 
         emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
         emp.muestraRegistros(jtempleados, "", Menu.idcompania);
         
     }//GEN-LAST:event_jbcancelarMouseClicked
@@ -720,7 +788,9 @@ public class Empleados extends javax.swing.JFrame {
         if(jcbrol.getSelectedItem().toString().equals("--") 
                 || jtxtnombre.getText().equals("") 
                 || jtxtpaterno.getText().equals("") 
-                || jtxtmaterno.getText().equals("")){
+                || jtxtmaterno.getText().equals("")
+                || jtxtusuario.getText().equals("")
+                || jtxtcontrasenia.getPassword().equals("")){
             jtm.jTextAreaMessage("Información invalida");
         }else{
             char[] contrasenia = jtxtcontrasenia.getPassword();
@@ -729,13 +799,17 @@ public class Empleados extends javax.swing.JFrame {
                     jtxtpaterno.getText(), 
                     jtxtmaterno.getText(), 
                     jdtcnacimiento, 
-                    jdtcregistro, 
-                    jtxtusuario.getText(),
-                    _cont,
+                    jtxtdireccion.getText(), 
+                    jtxttelefono.getText(),
+                    jtxtcorreo.getText(),
+                    estatus,
                     jcbrol.getSelectedItem().toString(),
+                    jtxtusuario.getText(),
+                    Arrays.toString(jtxtcontrasenia.getPassword()),
+                    Menu.idusu,
                     Menu.idcompania);
             emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                    jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
             emp.muestraRegistros(jtempleados, "", Menu.idcompania);
         }
         
@@ -743,27 +817,28 @@ public class Empleados extends javax.swing.JFrame {
 
     private void jbmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmodificarActionPerformed
 
-        char[] _cont = jtxtcontrasenia.getPassword();
-        String contrasenia = String.valueOf(_cont);
         if(String.valueOf(idempleado).equals("")){
             jtm.jTextAreaMessage("No se ha seleccionado registro");
         }else{
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                java.util.Date nfecha = sdf.parse(jdtcnacimiento.toString());
-                java.util.Date rfecha = sdf.parse(jdtcregistro.toString());
+                java.util.Date nfecha = sdf.parse(jdtcnacimiento.toString());                
                 emp.jbmodificar(nombre,
                         paterno,
                         materno,
                         nfecha,
-                        rfecha,
+                        direccion,
+                        telefono,
+                        correo,
+                        estatus,
+                        jcbrol.getSelectedItem().toString(),
                         usuario,
                         contrasenia,
-                        jcbrol.getSelectedItem().toString(),
+                        Menu.idusu,                        
                         Menu.idcompania,
                         idempleado);
-                emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento,
-                        jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
                 emp.muestraRegistros(jtempleados, "", Menu.idcompania);
             } catch (ParseException ex) {
                 Logger.getLogger(Empleados.class.getName()).log(Level.SEVERE, null, ex);
@@ -779,7 +854,7 @@ public class Empleados extends javax.swing.JFrame {
         }else{
             emp.jbeliminar(idempleado, Menu.idcompania);
             emp.limpiar(jtxtnombre, jtxtpaterno, jtxtmaterno, jdtcnacimiento, 
-                    jdtcregistro, jtxtusuario, jtxtcontrasenia, jcbrol);
+                    jtxtdireccion, jtxttelefono, jtxtcorreo, jchkestatus, jcbrol);
             emp.muestraRegistros(jtempleados, "", Menu.idcompania);
         }
         
@@ -844,6 +919,16 @@ public class Empleados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jtempleadosKeyReleased
 
+    private void jchkestatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchkestatusActionPerformed
+
+        if(jchkestatus.isSelected() == true){
+            estatus = 1;
+        }else if(jchkestatus.isSelected() == false){
+            estatus = 0;
+        }
+        
+    }//GEN-LAST:event_jchkestatusActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -876,6 +961,9 @@ public class Empleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -890,6 +978,7 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -913,8 +1002,8 @@ public class Empleados extends javax.swing.JFrame {
     public static javax.swing.JButton jbreportes;
     private javax.swing.JButton jbsalir;
     private javax.swing.JComboBox<String> jcbrol;
+    private javax.swing.JCheckBox jchkestatus;
     private com.toedter.calendar.JDateChooser jdtcnacimiento;
-    private com.toedter.calendar.JDateChooser jdtcregistro;
     public static javax.swing.JMenu jmacciones;
     public static javax.swing.JMenuItem jmi_cancelar;
     public static javax.swing.JMenuItem jmi_eliminar;
@@ -926,9 +1015,13 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JTable jtempleados;
     private javax.swing.JTextField jtxtbuscar;
     private javax.swing.JPasswordField jtxtcontrasenia;
+    private javax.swing.JTextField jtxtcorreo;
+    private javax.swing.JTextField jtxtdireccion;
+    private javax.swing.JTextField jtxtestatus;
     private javax.swing.JTextField jtxtmaterno;
     private javax.swing.JTextField jtxtnombre;
     private javax.swing.JTextField jtxtpaterno;
+    private javax.swing.JTextField jtxttelefono;
     private javax.swing.JTextField jtxtusuario;
     // End of variables declaration//GEN-END:variables
 
