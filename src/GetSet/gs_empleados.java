@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class gs_empleados {
     
-    String nombre, paterno, materno, rol, usuario, contrasenia;
+    String nombre, paterno, materno, rol, usuario, contrasenia, direccion, telefono, correo;
 
     public String getUsuario() {
         return usuario;
@@ -47,7 +47,7 @@ public class gs_empleados {
     public void setRol(String rol) {
         this.rol = rol;
     }
-    int idusuario, idcompania;
+    int idusuario, idcompania, estatus;
 
     public int getIdcompania() {
         return idcompania;
@@ -105,5 +105,38 @@ public class gs_empleados {
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
+    
+    public String getDireccion() {
+         return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
+    }
+    
     
 }

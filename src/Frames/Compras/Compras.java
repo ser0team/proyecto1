@@ -35,7 +35,7 @@ import net.sf.jasperreports.engine.JRException;
 public class Compras extends javax.swing.JFrame {
     
     Image img;
-    public static int idproveedor, idproducto;
+    public static int idproveedor, idproducto, idempleado;
     int _idproducto;
     compras comp = new compras();
     JTextAreaMessages jtm = new JTextAreaMessages();
@@ -381,7 +381,7 @@ public class Compras extends javax.swing.JFrame {
 
         jPanel1.setBackground(Color.decode("#C70039")
         );
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jbcproveedor.setText("Proveedor:");
         jbcproveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -488,7 +488,7 @@ public class Compras extends javax.swing.JFrame {
 
         jPanel7.add(jPanel1);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel4.setOpaque(false);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder("Observaciónes"));
@@ -697,12 +697,12 @@ public class Compras extends javax.swing.JFrame {
                 
                 comp.jbguardar(idproveedor, 
                         jtxtproveedor.getText(), 
-                        cmostrador, 
-                        jtxtobservaciones.getText(), 
                         jdcfecha, 
-                        Double.parseDouble(jltotal.getText()),
+                        jtxtobservaciones.getText(),                        
+                        Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
-                        Menu.idcompania);                
+                        Menu.idcompania,
+                        idempleado);                
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);            
                 
@@ -717,7 +717,7 @@ public class Compras extends javax.swing.JFrame {
                             Menu.idcompania);
                     }
                 
-                    comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+                    comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                             jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
                     
                     DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
@@ -726,14 +726,15 @@ public class Compras extends javax.swing.JFrame {
                         dtm.removeRow(dtm.getRowCount()-1);
                     }
             }else{                
-                comp.jbguardar(idproveedor, 
+                comp.jbguardar(
+                        idproveedor, 
                         jtxtproveedor.getText(), 
-                        jtxtticket.getText(), 
-                        jtxtobservaciones.getText(), 
                         jdcfecha, 
-                        Double.parseDouble(jltotal.getText()),                        
+                        jtxtobservaciones.getText(),                        
+                        Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
-                        Menu.idcompania);                        
+                        Menu.idcompania,
+                        idempleado);                          
                 
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);                                         
@@ -749,7 +750,7 @@ public class Compras extends javax.swing.JFrame {
                             Menu.idcompania);
                     }
                 
-                comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+                comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                     jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
                 
                 DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
@@ -765,7 +766,7 @@ public class Compras extends javax.swing.JFrame {
 
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
 
-        comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+        comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                 jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
         DefaultTableModel dtm = (DefaultTableModel) jtproductos.getModel();
         int a = jtproductos.getRowCount()-1;
@@ -991,7 +992,7 @@ public class Compras extends javax.swing.JFrame {
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-        comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+        comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                 jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
         DefaultTableModel dtm = (DefaultTableModel) jtproductos.getModel();
         int a = jtproductos.getRowCount()-1;
@@ -1012,12 +1013,12 @@ public class Compras extends javax.swing.JFrame {
                 
                 comp.jbguardar(idproveedor, 
                         jtxtproveedor.getText(), 
-                        cmostrador, 
-                        jtxtobservaciones.getText(), 
                         jdcfecha, 
-                        Double.parseDouble(jltotal.getText()),
+                        jtxtobservaciones.getText(),                        
+                        Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
-                        Menu.idcompania);                
+                        Menu.idcompania,
+                        idempleado);                
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);            
                 
@@ -1032,7 +1033,7 @@ public class Compras extends javax.swing.JFrame {
                             Menu.idcompania);
                     }
                 
-                    comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+                    comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                             jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
                     
                     DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
@@ -1043,12 +1044,12 @@ public class Compras extends javax.swing.JFrame {
             }else{                
                 comp.jbguardar(idproveedor, 
                         jtxtproveedor.getText(), 
-                        jtxtticket.getText(), 
-                        jtxtobservaciones.getText(), 
                         jdcfecha, 
-                        Double.parseDouble(jltotal.getText()),
+                        jtxtobservaciones.getText(),                        
+                        Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
-                        Menu.idcompania);                        
+                        Menu.idcompania,
+                        idempleado);                          
                 
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);                                         
@@ -1064,7 +1065,7 @@ public class Compras extends javax.swing.JFrame {
                             Menu.idcompania);
                     }
                 
-                comp.jbcancelar(jtxtproveedor, jtxtticket, jtxtproducto, jtxtprecio, 
+                comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
                     jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
                 
                 DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
@@ -1171,6 +1172,7 @@ public class Compras extends javax.swing.JFrame {
     private javax.swing.JTextField jtxttotal;
     private javax.swing.JTextField jtxtunidad;
     // End of variables declaration//GEN-END:variables
+
 
      @Override
     public Image getIconImage() {

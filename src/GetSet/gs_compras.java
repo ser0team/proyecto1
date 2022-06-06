@@ -12,19 +12,25 @@ import java.util.Date;
  * @author jraraujo
  */
 public class gs_compras {
-    int idproveedor, idproducto, cantidad, idcompra, idalmacen, idpasillo, idanaquel,
-            idbin, idempleado, idempresa;
+    int idcompra, idproveedor, idusuario, idempresa, idempleado, idalmacen, idpasillo, idanaquel,
+            idbin, cantidad, idproducto;
 
-    public int getIdempleado() {
+  public int getIdempleado() {
         return idempleado;
     }
 
     public void setIdempleado(int idempleado) {
         this.idempleado = idempleado;
     }
-
     public int getIdempresa() {
         return idempresa;
+    }
+
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
+    }
+        public int getIdusuario() {
+        return idusuario;
     }
 
     public void setIdempresa(int idempresa) {
@@ -120,14 +126,14 @@ public class gs_compras {
     public void setRazon_ajuste(String razon_ajuste) {
         this.razon_ajuste = razon_ajuste;
     }
-    Date fecha, fecha_ajuste;
+    Date fechacom, fecha_ajuste;
     
-    public Date getFecha() {
-        return fecha;
+    public Date getFechacom() {
+        return fechacom;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechacom(Date fechacom) {
+        this.fechacom = fechacom;
     }
 
     public int getIdproveedor() {
