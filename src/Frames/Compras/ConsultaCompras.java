@@ -570,20 +570,20 @@ public class ConsultaCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_jtcompraMouseClicked
 
     private void jmi_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_guardarActionPerformed
-        if(String.valueOf(idproveedor).equals("") || jtxtticket.getText().equals("") 
+        if(String.valueOf(idproveedor).equals("") 
                 || jdcfecha.getDate() == null || String.valueOf(idcompra).equals("")){
             jtm.jTextAreaMessage("Existen valores nulos");
         }else{
-            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jtxtticket.getText(), 
-                    jtxtobservaciones.getText(), jdcfecha, idcompra, Menu.idusu, Menu.idcompania);
-            comp.jbcancelarCompra(jtxtproveedor, jtxtticket, jtxtobservaciones, jdcfecha);
+            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha, 
+                    jtxtobservaciones.getText(), idcompra, Menu.idusu, Menu.idcompania);
+            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
         }
         
     }//GEN-LAST:event_jmi_guardarActionPerformed
 
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
 
-         comp.jbcancelarCompra(jtxtproveedor, jtxtticket, jtxtobservaciones, jdcfecha);
+         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
          comp.muestraCompras(jtcompra, "", jdcde, jdchasta, Menu.idcompania);
          comp.total(jtcompra, jtxttotal);
         
@@ -696,10 +696,9 @@ public class ConsultaCompras extends javax.swing.JFrame {
     private void jchkmostradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchkmostradorActionPerformed
 
        if(jchkmostrador.isSelected() == true){
-            jtxtticket.setEditable(false);
             cmostrador = "Mostrador";
         }else{
-            jtxtticket.setEditable(true);
+           
         }
         
     }//GEN-LAST:event_jchkmostradorActionPerformed
@@ -729,7 +728,7 @@ public class ConsultaCompras extends javax.swing.JFrame {
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-         comp.jbcancelarCompra(jtxtproveedor, jtxtticket, jtxtobservaciones, jdcfecha);
+         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
          comp.muestraCompras(jtcompra, "", jdcde, jdchasta, Menu.idcompania);
          comp.total(jtcompra, jtxttotal);
                  
@@ -741,9 +740,9 @@ public class ConsultaCompras extends javax.swing.JFrame {
                 || jdcfecha.getDate() == null || String.valueOf(idcompra).equals("")){
             jtm.jTextAreaMessage("Existen valores nulos");
         }else{
-            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jtxtticket.getText(), 
-                    jtxtobservaciones.getText(), jdcfecha, idcompra, Menu.idusu, Menu.idcompania);
-            comp.jbcancelarCompra(jtxtproveedor, jtxtticket, jtxtobservaciones, jdcfecha);
+            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha, 
+                    jtxtobservaciones.getText(), idcompra, Menu.idusu, Menu.idcompania);
+            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
         }
         
     }//GEN-LAST:event_jbguardarActionPerformed

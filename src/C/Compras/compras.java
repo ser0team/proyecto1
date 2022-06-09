@@ -247,11 +247,10 @@ public class compras {
        }           
     }
    
-   public void jbcancelarCompra(JTextField jtxtproveedor, JTextField jtxtticket, 
+   public void jbcancelarCompra(JTextField jtxtproveedor, 
            JTextArea jtxtobservaciones, JDateChooser jdcfecha){
        try{
            jtxtproveedor.setText("");
-           jtxtticket.setText("");
            jtxtobservaciones.setText("");
            jdcfecha.setDate(null);
        }catch(Exception ex){

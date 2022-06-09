@@ -22,6 +22,7 @@ public class gs_corte {
     public void setIdempresa(int idempresa) {
         this.idempresa = idempresa;
     }
+    
     double corte;
     Date fechacorte, fechacom;
 
