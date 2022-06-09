@@ -11,7 +11,7 @@ package GetSet;
  */
 public class gs_caja {
     
-    int idcaja, idempleado, idempresa;
+    int idcaja, idusuario, idempresa;
 
     public int getIdempresa() {
         return idempresa;
@@ -21,12 +21,12 @@ public class gs_caja {
         this.idempresa = idempresa;
     }
 
-    public int getIdempleado() {
-        return idempleado;
+    public int getIusuario() {
+        return idusuario;
     }
 
-    public void setIdempleado(int idempleado) {
-        this.idempleado = idempleado;
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
     Double caja;
     String fecha;

@@ -28,7 +28,7 @@ public class corte {
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
             java.sql.Date fcaja = new java.sql.Date(fecha.getDate().getTime());
-            String sql = "Select caja.caja from caja where caja.fecha='"+fcaja
+            String sql = "Select caja.caja from caja where caja.fechacorte='"+fcaja
                     +"' and caja.idempresa='"+idempresa+"'";
 
             cc._callablestatement(sql);
@@ -52,8 +52,8 @@ public class corte {
              
              java.sql.Date _fecha = new java.sql.Date(jdcfecha.getDate().getTime());
              
-             gs.setFechacompras(_fecha);
-             String sql = "select compras.total from compras where compras.fecha='"+gs.getFechacompras()
+             gs.setFechacom(_fecha);
+             String sql = "select compras.total from compras where compras.fechacom='"+gs.getFechacom()
                      +"' and compras.idempresa='"+idempresa+"'";
              cc._callablestatement(sql);
              cc._executeProcedureSelect();
@@ -107,21 +107,21 @@ public class corte {
         }
     }
     
-    public void cerrarcorte(double corte, JDateChooser fechacorte, int idempleado, 
+    public void cerrarcorte(double corte, JDateChooser fechacorte, int idusuario, 
             int idempresa){
         try{
             java.sql.Date fecha = new java.sql.Date(fechacorte.getDate().getTime());
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan"); 
             gs.setCorte(corte);
             gs.setFechacorte(fecha);
-            gs.setIdempleado(idempleado);
+            gs.setIdusuario(idusuario);
             gs.setIdempresa(idempresa);
             String sql = "insert into cortes(corte, "
                     + "fecha_corte, "
-                    + "idempleado,"
+                    + "idusuario,"
                     + "idempresa)values('"+gs.getCorte()
                     +"','"+gs.getFechacorte()
-                    +"','"+gs.getIdempleado()
+                    +"','"+gs.getIdusuario()
                     +"','"+gs.getIdempresa()+"')";
             cc._callablestatement(sql);
             cc._executeProcedure();
@@ -139,7 +139,7 @@ public class corte {
             dtm.addColumn("Id");
             dtm.addColumn("Corte");
             dtm.addColumn("Fecha");
-            dtm.addColumn("Id Empleado");
+            dtm.addColumn("Id Usuario");
             dtm.addColumn("Id Empresa");
             jtable.setModel(dtm);
             
@@ -151,7 +151,7 @@ public class corte {
                 java.sql.Date _de = new java.sql.Date(Corte.jdcde.getDate().getTime());
                 java.sql.Date _hasta = new java.sql.Date(Corte.jdchasta.getDate().getTime());
                 
-                sql = "select * from cortes where fecha between '"+_de+"' and '"+_hasta
+                sql = "select * from cortes where fechacorte between '"+_de+"' and '"+_hasta
                         +"' idempresa='"+idempresa+"'";
             }
             
@@ -196,7 +196,7 @@ public class corte {
                 java.sql.Date _fde = new java.sql.Date(fechade.getDate().getTime());
                 java.sql.Date _fhasta = new java.sql.Date(fechahasta.getDate().getTime());
 
-                sql = "select * from cortes where fecha_corte between '"+_fde+"' and '"+_fhasta
+                sql = "select * from cortes where fechacorte between '"+_fde+"' and '"+_fhasta
                         +"' idempresa='"+idempresa+"'";
             }
 

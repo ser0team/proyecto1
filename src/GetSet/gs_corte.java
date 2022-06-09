@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class gs_corte {
     
-    int idcorte, idempleado, idempresa;
+    int idcorte, idusuario, idempresa;
 
     public int getIdempresa() {
         return idempresa;
@@ -23,14 +23,14 @@ public class gs_corte {
         this.idempresa = idempresa;
     }
     double corte;
-    Date fechacorte, fechacompras;
+    Date fechacorte, fechacom;
 
-    public Date getFechacompras() {
-        return fechacompras;
+    public Date getFechacom() {
+        return fechacom;
     }
 
-    public void setFechacompras(Date fechacompras) {
-        this.fechacompras = fechacompras;
+    public void setFechacom(Date fechacom) {
+        this.fechacom = fechacom;
     }
 
     public int getIdcorte() {
@@ -41,12 +41,12 @@ public class gs_corte {
         this.idcorte = idcorte;
     }
 
-    public int getIdempleado() {
-        return idempleado;
+    public int getIdusuario() {
+        return idusuario;
     }
 
-    public void setIdempleado(int idempleado) {
-        this.idempleado = idempleado;
+    public void setIdusuario(int idusuario) {
+        this.idusuario = idusuario;
     }
 
     public double getCorte() {

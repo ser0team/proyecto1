@@ -22,18 +22,18 @@ public class caja {
     JTextAreaMessages jtm = new JTextAreaMessages();
     gs_caja gs = new gs_caja();
     
-    public void jbguardar(double caja, String fecha, int idempleado, int idempresa){
+    public void jbguardar(double caja, String fecha, int idusuario, int idempresa){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");     
             
             gs.setCaja(caja);
             gs.setFecha(fecha);
-            gs.setIdempleado(idempleado);
+            gs.setIdusuario(idusuario);
             gs.setIdempresa(idempresa);
-            String sql = "insert into caja(caja, fecha, idempleado, idempresa)"
+            String sql = "insert into caja(caja, fecha, idusuario, idempresa)"
                     + "values('"+gs.getCaja()
                     +"','"+gs.getFecha()
-                    +"','"+gs.getIdempleado()
+                    +"','"+gs.getIusuario()
                     +"','"+gs.getIdempresa()+"')";
             cc._callablestatement(sql);
             cc._executeProcedure();
@@ -66,19 +66,19 @@ public class caja {
         }
     }
     
-    public void jbmodificar(double caja, String fecha, int idempleado, int idempresa, 
+    public void jbmodificar(double caja, String fecha, int idusuario, int idempresa, 
             int idcaja){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
                      
             gs.setCaja(caja);
             gs.setFecha(fecha);
-            gs.setIdempleado(idempleado);            
+            gs.setIdusuario(idusuario);            
             gs.setIdempresa(idempresa);
             gs.setIdcaja(idcaja);
             String sql = "update caja set caja='"+gs.getCaja()
                     +"', fecha='"+gs.getFecha()
-                    +"', idempleado='"+gs.getIdempleado()
+                    +"', idusuario='"+gs.getIusuario()
                     +"', idempresa='"+gs.getIdempresa()
                     +"' where idcaja='"+gs.getIdcaja()
                     +"' and idempresa='"+gs.getIdempresa()+"'";
@@ -97,7 +97,7 @@ public class caja {
             dtm.addColumn("Id");
             dtm.addColumn("Caja");
             dtm.addColumn("Fecha");
-            dtm.addColumn("Id Empleado");
+            dtm.addColumn("Id Usuario");
             dtm.addColumn("Id Empresa");
             jtable.setModel(dtm);
             

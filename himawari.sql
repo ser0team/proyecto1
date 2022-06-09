@@ -198,7 +198,7 @@ CREATE TABLE `compras` (
   `idcompra` int NOT NULL,
   `idproveedor` int NOT NULL,
   `proveedor` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `fechaccom` date DEFAULT NULL,
+  `fechacom` date DEFAULT NULL,
   `observaciones` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
   `total` double DEFAULT NULL,
   `idusuario` int NOT NULL,
@@ -828,4 +828,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-06 15:33:38
+-- Dump completed on 2022-06-08 22:59:09

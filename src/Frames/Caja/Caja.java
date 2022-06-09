@@ -100,7 +100,7 @@ public class Caja extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jtxtcaja = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jtxtidempleado = new javax.swing.JTextField();
+        jtxtidusuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jtxtfechaactual = new javax.swing.JTextField();
@@ -235,7 +235,7 @@ public class Caja extends javax.swing.JFrame {
         jPanel3.setBackground(Color.decode("#C70039"));
         jPanel3.setOpaque(false);
 
-        jtcaja.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), Color.decode("#C70039"))); // NOI18N
+        jtcaja.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), Color.decode("#C70039"))); // NOI18N
         jtcaja.setForeground(new java.awt.Color(0, 153, 153));
         jtcaja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -275,7 +275,7 @@ public class Caja extends javax.swing.JFrame {
         jPanel2.setBackground(Color.decode("#C70039"));
 
         jPanel1.setBackground(Color.decode("#C70039"));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Caja:");
@@ -283,8 +283,8 @@ public class Caja extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Empleado:");
 
-        jtxtidempleado.setEditable(false);
-        jtxtidempleado.setText(String.valueOf(Menu.idusu));
+        jtxtidusuario.setEditable(false);
+        jtxtidusuario.setText(String.valueOf(Menu.idusu));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Buscar:");
@@ -316,7 +316,7 @@ public class Caja extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtxtidempleado, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)))
+                        .addComponent(jtxtidusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -327,7 +327,7 @@ public class Caja extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jtxtcaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jtxtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtidusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -467,7 +467,7 @@ public class Caja extends javax.swing.JFrame {
         }else{
             ca.jbguardar(Double.parseDouble(jtxtcaja.getText()), 
                     jtxtfechaactual.getText(), 
-                    Integer.parseInt(jtxtidempleado.getText()),
+                    Integer.parseInt(jtxtidusuario.getText()),
                     Menu.idcompania);
             ca.jbcancelar(jtxtcaja);
             ca.muestraRegistros(jtcaja, Menu.idcompania);
@@ -501,7 +501,7 @@ public class Caja extends javax.swing.JFrame {
         }else{
             ca.jbmodificar(Double.parseDouble(jtxtcaja.getText()), 
                     jtxtfechaactual.getText(), 
-                        Integer.parseInt(jtxtidempleado.getText()), 
+                        Integer.parseInt(jtxtidusuario.getText()), 
                         Menu.idcompania,
                         idcaja);
             ca.muestraRegistros(jtcaja, Menu.idcompania);
@@ -573,7 +573,7 @@ public class Caja extends javax.swing.JFrame {
         }else{
             ca.jbmodificar(Double.parseDouble(jtxtcaja.getText()), 
                     jtxtfechaactual.getText(), 
-                        Integer.parseInt(jtxtidempleado.getText()), 
+                        Integer.parseInt(jtxtidusuario.getText()), 
                         Menu.idcompania,
                         idcaja);
             ca.muestraRegistros(jtcaja, Menu.idcompania);
@@ -608,7 +608,7 @@ public class Caja extends javax.swing.JFrame {
         }else{
             ca.jbguardar(Double.parseDouble(jtxtcaja.getText()), 
                     jtxtfechaactual.getText(), 
-                    Integer.parseInt(jtxtidempleado.getText()),
+                    Integer.parseInt(jtxtidusuario.getText()),
                     Menu.idcompania);
             ca.jbcancelar(jtxtcaja);
             ca.muestraRegistros(jtcaja, Menu.idcompania);
@@ -693,7 +693,7 @@ public class Caja extends javax.swing.JFrame {
     private javax.swing.JTable jtcaja;
     private javax.swing.JTextField jtxtcaja;
     private javax.swing.JTextField jtxtfechaactual;
-    private javax.swing.JTextField jtxtidempleado;
+    private javax.swing.JTextField jtxtidusuario;
     // End of variables declaration//GEN-END:variables
 
      @Override

@@ -329,7 +329,7 @@
                     <Column editable="true" title="Id Corte" type="java.lang.Object"/>
                     <Column editable="true" title="Corte" type="java.lang.Object"/>
                     <Column editable="true" title="Fecha" type="java.lang.Object"/>
-                    <Column editable="true" title="Id Empleado" type="java.lang.Object"/>
+                    <Column editable="true" title="Id Usuario" type="java.lang.Object"/>
                     <Column editable="true" title="Id Empresa" type="java.lang.Object"/>
                   </Table>
                 </Property>
