@@ -37,7 +37,7 @@ public class datosempresa {
             gs.setEstado(estado);
             gs.setMunicipio(municipio);
             gs.setColonia(colonia);
-            gs.setDireccion(direccion);
+            gs.setDireccion(direccion); //Campo de calle
             gs.setNoext(noext);
             gs.setNoint(noint);
             gs.setCodpos(codpos);
@@ -45,15 +45,15 @@ public class datosempresa {
             gs.setCorreo(correo);
             gs.setPagina(pagina);
             String sql = "insert into empresas(rznscl, rfc, ps, std, "
-                    + "mncp, cln, cdps, cln, cll, nmrxtrr, nmrntrr, tlfn, crr, "
+                    + "mncp, cdps, cln, cll, nmrxtrr, nmrntrr, tlfn, crr, "
                     + "pgn)values('"+gs.getRazon()
                     +"','"+gs.getRfc()
                     +"','"+gs.getPais()
                     +"','"+gs.getEstado()
-                    +"','"+gs.getMunicipio()
-                    +"','"+gs.getColonia()
+                    +"','"+gs.getMunicipio()                    
                     +"','"+gs.getCodpos()
-                    +"','"+gs.getDireccion()
+                    +"','"+gs.getColonia()
+                    +"','"+gs.getDireccion() //Campo de calle
                     +"','"+gs.getNoext()
                     +"','"+gs.getNoint()                    
                     +"','"+gs.getTelefono()
@@ -242,7 +242,7 @@ public class datosempresa {
             gs.setProcessor_ct(prcssr_ct);
             gs.setLcnc(lcnc);
             gs.setCntd(cntd);
-            String sql = "insert into fenix_registro(razonsocial, rfc, uuid, "
+            String sql = "insert into himawari_registro(rznscl, rfc, uuid, "
                     + "hrdwr, prcssr_sn, prcssr_id, prcssr_ct, lcnc, cntd)"
                     + "values('"+gs.getRazon()
                     +"','"+gs.getRfc()
@@ -286,24 +286,24 @@ public class datosempresa {
     public boolean obtenRegistro(String lcnc){
         try{
             ccr.conexionMySql();
-            String sql = "Select fenix_registro.id,"
-                    + "fenix_registro.razonsocial,"
-                    + "fenix_registro.rfc,"
-                    + "fenix_registro.uuid,"
-                    + "fenix_registro.hrdwr,"
-                    + "fenix_registro.prcssr_sn,"
-                    + "fenix_registro.prcssr_id,"
-                    + "fenix_registro.prcssr_ct, "
-                    + "fenix_registro.lcnc,"
-                    + "fenix_registro.cntd "
-                    + "from fenix_registro "
-                    + "where fenix_registro.lcnc='"+lcnc
+            String sql = "Select himawari_registro.id,"
+                    + "himawari_registro.rznscl,"
+                    + "himawari_registro.rfc,"
+                    + "himawari_registro.uuid,"
+                    + "himawari_registro.hrdwr,"
+                    + "himawari_registro.prcssr_sn,"
+                    + "himawari_registro.prcssr_id,"
+                    + "himawari_registro.prcssr_ct, "
+                    + "himawari_registro.lcnc,"
+                    + "himawari_registro.cntd "
+                    + "from himawari_registro "
+                    + "where himawari_registro.lcnc='"+lcnc
                     +"' and rfc='"+rfc+"'";
                     ccr._callablestatement(sql);
                     ccr._executeProcedureSelect();
                     ccr._resultSet();
                     if(ccr._resultSet().first() == false){
-                        jtm.jTextAreaMessage("ERROR: Fenix POS, Connection could not started. Service Null Connection");
+                        jtm.jTextAreaMessage("ERROR: HIMAWARI POS, Connection could not started. Service Null Connection");
                         ccr.desconectar();
                         cnregistro = false;
                     }else{
@@ -339,7 +339,7 @@ public class datosempresa {
     public void actualizaEstadoCC(int cntd){
         try{
             ccr.conexionMySql();
-            String sql = "update fenix_registro set cntd='"+cntd
+            String sql = "update himawari_registro set cntd='"+cntd
                     +"' where lcnc='"+licencia._LICENCIA+"'";
             ccr._callablestatement(sql);
             ccr._executeProcedure();
