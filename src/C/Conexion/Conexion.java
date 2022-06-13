@@ -31,14 +31,15 @@ public class Conexion {
     String zoneDateTime = "?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC";    
     CallableStatement sp=null;
     ResultSet rs=null;
-    JTextAreaMessages jtm = new JTextAreaMessages();            
+    JTextAreaMessages jtm = new JTextAreaMessages();   
+    String db = "taurus";
     
     public Connection verificaConexionMySql(String host, String puerto, String user, char[] passwd)throws ClassNotFoundException{
         try{
             String strpassword = String.valueOf(passwd);
             Class<?> forName = Class.forName("com.mysql.cj.jdbc.Driver");            
             conexion = (Connection) DriverManager.getConnection("jdbc:mysql://"
-                    +host+":"+puerto+"/"+"taurus"+zoneDateTime,user, strpassword);
+                    +host+":"+puerto+"/"+db+zoneDateTime,user, strpassword);
             System.out.println(conexion);
             System.out.println("Conexion establecida con exito");            
         }
@@ -52,7 +53,7 @@ public class Conexion {
         try{
             Class<?> forName = Class.forName("com.mysql.cj.jdbc.Driver");            
             conexion = (Connection) DriverManager.getConnection("jdbc:mysql://"
-                    +host+":"+puerto+"/"+"mydb"+zoneDateTime,user, passwd);
+                    +host+":"+puerto+"/"+db+zoneDateTime,user, passwd);
             System.out.println(conexion);
             System.out.println("Conexion establecida con exito");
             
