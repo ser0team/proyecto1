@@ -7,11 +7,13 @@ package Frames.Ventas;
 
 import C.Funciones.CheckAccess;
 import C.Funciones.Instancias;
+import C.Funciones.JTextAreaMessages;
 import C.Funciones.f_ExportarExcel;
 import C.Ventas.ordenesventa;
 import Frames.Menu;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -24,6 +26,8 @@ public class OrdenesVenta extends javax.swing.JFrame {
     CheckAccess cha = new CheckAccess();
     ordenesventa ordven = new ordenesventa();
     Instancias inst = new Instancias();
+    JTextAreaMessages jtm = new JTextAreaMessages();
+    int idov, estatus;
 
     /**
      * Creates new form OrdenesVenta
@@ -71,10 +75,9 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jtxtprecio = new javax.swing.JTextField();
-        jButton11 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtov = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jtxtotal = new javax.swing.JTextField();
@@ -88,6 +91,15 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jtxtordenventa = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jSeparator10 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -222,8 +234,6 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
         jLabel6.setText("Precio:");
 
-        jButton11.setText("Modificar Platillos");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -241,10 +251,9 @@ public class OrdenesVenta extends javax.swing.JFrame {
                             .addComponent(jtxtplatillo)
                             .addComponent(jtxtprecio)
                             .addComponent(jtxtcantidad, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                        .addComponent(jButton11)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton9)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -263,13 +272,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jtxtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton11))
+                .addComponent(jButton9)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtov.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -277,10 +284,15 @@ public class OrdenesVenta extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Orden Venta", "Id Platillo", "Nombre", "Mesa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jtov.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtovMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jtov);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -333,6 +345,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jLabel5.setText("Mesa:");
 
         jchkestatus.setText("Estatus");
+        jchkestatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jchkestatusActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Id OV:");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -358,7 +375,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                     .addComponent(jtxtmesa)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jchkestatus)
@@ -422,6 +439,65 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jTabbedPane1.addTab("Ordenes de Venta", jPanel1);
 
         jMenu1.setText("Acciones");
+
+        jMenuItem1.setText("Guardar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Cancelar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Eliminar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Modificar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Excel");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
+        jMenu1.add(jSeparator9);
+
+        jMenuItem6.setText("Eliminar platillo");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+        jMenu1.add(jSeparator10);
+
+        jMenuItem7.setText("Salir");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem7);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Reporte");
@@ -434,7 +510,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,27 +525,36 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
-        ordven.agregarPlatillo(Integer.parseInt(jtxtplatillo.getText()), 
-                Double.parseDouble(jtxtprecio.getText()), 
-                Integer.parseInt(jtxtcantidad.getText()), 
-                Menu.idusu, 
-                Menu.idcompania);
-        ordven.limpiarPlatillos(jtxtplatillo, jtxtprecio, jtxtcantidad);
+        if(jtxtplatillo.getText().equals("") ||
+                jtxtprecio.getText().equals("") || jtxtcantidad.getText().equals("")){
+            jtm.jTextAreaMessage("Exiten campos vacios");
+        }else{
+            ordven.agregarPlatillo(Integer.parseInt(jtxtplatillo.getText()), 
+                    Double.parseDouble(jtxtprecio.getText()), 
+                    Integer.parseInt(jtxtcantidad.getText()), 
+                    Menu.idusu, 
+                    Menu.idcompania);
+            ordven.limpiarPlatillos(jtxtplatillo, jtxtprecio, jtxtcantidad);
+        }
         
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        ordven.guardarOV(jfecha, jtxtmesa.getText(), Menu.idusu, Menu.idcompania);
-        ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
-        ordven.mostrar(jTable1, "");
+        if(jfecha.getDate() == null || jtxtmesa.getText().equals("")){
+            jtm.jTextAreaMessage("Existen campos vacios");
+        }else{
+            ordven.guardarOV(jfecha, jtxtmesa.getText(), Menu.idusu, Menu.idcompania);
+            ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
+            ordven.mostrar(jtov, "");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
-        ordven.mostrar(jTable1, "");
+        ordven.mostrar(jtov, "");
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -477,7 +562,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
         ordven.eliminarOV(Integer.parseInt(jtxtordenventa.getText()), Menu.idcompania);
         ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
-        ordven.mostrar(jTable1, "");
+        ordven.mostrar(jtov, "");
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -485,20 +570,20 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
         ordven.modificarOV(jfecha, jtxtmesa.getText(), Menu.idusu, Menu.idcompania, Integer.parseInt(jtxtordenventa.getText()));
         ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
-        ordven.mostrar(jTable1, "");
+        ordven.mostrar(jtov, "");
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
         f_ExportarExcel fexpex = new f_ExportarExcel();        
-        fexpex.exportarExcel(jTable1);
+        fexpex.exportarExcel(jtov);
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jtxtbuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtbuscarKeyReleased
 
-        ordven.mostrar(jTable1, jtxtbuscar.getText());
+        ordven.mostrar(jtov, jtxtbuscar.getText());
         
     }//GEN-LAST:event_jtxtbuscarKeyReleased
 
@@ -526,6 +611,99 @@ public class OrdenesVenta extends javax.swing.JFrame {
         inst.getInstanciaListarPlatillos();
         
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        if(jfecha.getDate() == null || jtxtmesa.getText().equals("")){
+            jtm.jTextAreaMessage("Existen campos vacios");
+        }else{
+            ordven.guardarOV(jfecha, jtxtmesa.getText(), Menu.idusu, Menu.idcompania);
+            ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
+            ordven.mostrar(jtov, "");
+        }
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+
+        ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
+        ordven.mostrar(jtov, "");
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        ordven.eliminarOV(Integer.parseInt(jtxtordenventa.getText()), Menu.idcompania);
+        ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
+        ordven.mostrar(jtov, "");
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+
+        ordven.modificarOV(jfecha, jtxtmesa.getText(), Menu.idusu, Menu.idcompania, Integer.parseInt(jtxtordenventa.getText()));
+        ordven.limpiarOV(jtxtordenventa, jfecha, jtxtmesa, jtxtplatillo, jtxtprecio, jtxtcantidad, jtxtotal);
+        ordven.mostrar(jtov, "");
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+
+        if(String.valueOf(idov).equals("")){
+            jtm.jTextAreaMessage("No se ha seleccionado un Id para eliminar");
+        }else{
+            ordven.eliminarPlatillo(idov, Menu.idcompania);
+        }
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jtovMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtovMouseClicked
+
+        idov = Integer.parseInt(jtov.getValueAt(jtov.getSelectedRow(), 0).toString());
+        
+    }//GEN-LAST:event_jtovMouseClicked
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+
+        Instancias._ordenesventa = null;
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+
+        f_ExportarExcel fexpex = new f_ExportarExcel();        
+        fexpex.exportarExcel(jtov);
+        
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jchkestatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jchkestatusActionPerformed
+
+        if(jchkestatus.isSelected() == false){
+            estatus = 1;
+            if(jtxtordenventa.getText().equals("")){
+                jtm.jTextAreaMessage("Se necesita una orden de venta para cerrar");
+            }else{
+                int mensaje = JOptionPane.showConfirmDialog(this, "¿Desea cerrar la OV?", "Himawari[Mensaje]", 
+                        JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+                if(mensaje == JOptionPane.NO_OPTION){
+                    ordven.actualizaEstatus(estatus, idov, Menu.idusu, Menu.idcompania);
+                }
+            }
+        }else if(jchkestatus.isSelected() == true){
+            estatus = 0;
+            if(jtxtordenventa.getText().equals("")){
+                jtm.jTextAreaMessage("Se necesita una orden de venta para abrir");
+            }else{
+                int mensaje = JOptionPane.showConfirmDialog(this, "¿Desea cerrar la OV?", "Himawari[Mensaje]", 
+                        JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+                if(mensaje == JOptionPane.NO_OPTION){
+                    ordven.actualizaEstatus(estatus, idov, Menu.idusu, Menu.idcompania);
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jchkestatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,7 +744,6 @@ public class OrdenesVenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -584,6 +761,13 @@ public class OrdenesVenta extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -591,6 +775,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
@@ -598,11 +783,12 @@ public class OrdenesVenta extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator6;
     private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JCheckBox jchkestatus;
     private com.toedter.calendar.JDateChooser jfecha;
+    private javax.swing.JTable jtov;
     private javax.swing.JTextField jtxtbuscar;
     private javax.swing.JTextField jtxtcantidad;
     private javax.swing.JTextField jtxtmesa;
