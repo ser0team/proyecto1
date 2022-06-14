@@ -702,7 +702,8 @@ public class Compras extends javax.swing.JFrame {
                         Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
                         Menu.idcompania,
-                        idempleado);                
+                        idempleado,
+                        jtxtticket.getText());                
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);            
                 
@@ -714,11 +715,12 @@ public class Compras extends javax.swing.JFrame {
                             jtagregar.getValueAt(row, 3).toString(),
                             Double.parseDouble(jtagregar.getValueAt(row, 4).toString()),
                             Menu.idusu,
-                            Menu.idcompania);
+                            Menu.idcompania,
+                            jtagregar.getValueAt(row, 7).toString());
                     }
                 
                     comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                            jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                            jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
                     
                     DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
                     int a = jtagregar.getRowCount()-1;
@@ -734,7 +736,8 @@ public class Compras extends javax.swing.JFrame {
                         Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
                         Menu.idcompania,
-                        idempleado);                          
+                        idempleado,
+                        jtxtticket.getText());                          
                 
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);                                         
@@ -747,11 +750,12 @@ public class Compras extends javax.swing.JFrame {
                             jtagregar.getValueAt(row, 3).toString(),
                             Double.parseDouble(jtagregar.getValueAt(row, 4).toString()),
                             Menu.idusu,
-                            Menu.idcompania);
+                            Menu.idcompania,
+                            jtagregar.getValueAt(row, 7).toString());
                     }
                 
                 comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                    jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                    jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
                 
                 DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
                 int a = jtagregar.getRowCount()-1;
@@ -767,7 +771,7 @@ public class Compras extends javax.swing.JFrame {
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
 
         comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
         DefaultTableModel dtm = (DefaultTableModel) jtproductos.getModel();
         int a = jtproductos.getRowCount()-1;
         for(int i = a; i >= 0; i--){
@@ -993,7 +997,7 @@ public class Compras extends javax.swing.JFrame {
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
         comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
         DefaultTableModel dtm = (DefaultTableModel) jtproductos.getModel();
         int a = jtproductos.getRowCount()-1;
         for(int i = a; i >= 0; i--){
@@ -1018,7 +1022,8 @@ public class Compras extends javax.swing.JFrame {
                         Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
                         Menu.idcompania,
-                        idempleado);                
+                        idempleado,
+                        jtxtticket.getText());                
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);            
                 
@@ -1030,11 +1035,12 @@ public class Compras extends javax.swing.JFrame {
                             jtagregar.getValueAt(row, 3).toString(),
                             Double.parseDouble(jtagregar.getValueAt(row, 4).toString()),
                             Menu.idusu,
-                            Menu.idcompania);
+                            Menu.idcompania,
+                            jtagregar.getValueAt(row, 7).toString());
                     }
                 
                     comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                            jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                            jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
                     
                     DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
                     int a = jtagregar.getRowCount()-1;
@@ -1049,7 +1055,8 @@ public class Compras extends javax.swing.JFrame {
                         Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,
                         Menu.idcompania,
-                        idempleado);                          
+                        idempleado,
+                        jtxtticket.getText());                          
                 
                 idcompra_ = comp.obtenerCompra(Menu.idcompania);                    
                 System.out.println("Id Compra: "+idcompra_);                                         
@@ -1062,11 +1069,12 @@ public class Compras extends javax.swing.JFrame {
                             jtagregar.getValueAt(row, 3).toString(),
                             Double.parseDouble(jtagregar.getValueAt(row, 4).toString()),
                             Menu.idusu,
-                            Menu.idcompania);
+                            Menu.idcompania,
+                            jtagregar.getValueAt(row, 1).toString());
                     }
                 
                 comp.jbcancelar(jtxtproveedor, jtxtproducto, jtxtprecio, 
-                    jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal);
+                    jtxtcantidad, jtxtunidad, jtxtobservaciones, jdcfecha, jltotal, jtxtticket);
                 
                 DefaultTableModel dtm = (DefaultTableModel) jtagregar.getModel();
                 int a = jtagregar.getRowCount()-1;

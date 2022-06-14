@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCompras" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Fenix"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="himawari"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -14,11 +14,10 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="idempresa" class="java.lang.Integer"/>
-	<parameter name="logo" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select compras.idcompra, compras.idproveedor, compras.proveedor, compras.ticket, compras.observaciones,
-compras.fecha, compras.total, compras.idempleado, compras.idempresa, empresas.razonsocial
-from compras, empresas where compras.idempresa = $P{idempresa}]]>
+		<![CDATA[select compras.idcompra, compras.idproveedor, compras.proveedor, compras.fechacom, compras.observaciones,
+ compras.total, compras.idusuario, compras.idempresa, compras.ticket, empresa.razonsocial
+from compras, empresa where compras.idempresa = $P{idempresa}]]>
 	</queryString>
 	<field name="idcompra" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="idcompra"/>
@@ -38,9 +37,9 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ticket" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="ticket"/>
-		<property name="com.jaspersoft.studio.field.label" value="ticket"/>
+	<field name="fechacom" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechacom"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechacom"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -50,21 +49,15 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fecha" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
-		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="total" class="java.math.BigDecimal">
 		<property name="com.jaspersoft.studio.field.name" value="total"/>
 		<property name="com.jaspersoft.studio.field.label" value="total"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="idempleado" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="idempleado"/>
-		<property name="com.jaspersoft.studio.field.label" value="idempleado"/>
+	<field name="idusuario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idusuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="idusuario"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -74,10 +67,16 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="ticket" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ticket"/>
+		<property name="com.jaspersoft.studio.field.label" value="ticket"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="compras"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="razonsocial" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="razonsocial"/>
 		<property name="com.jaspersoft.studio.field.label" value="razonsocial"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="empresas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empresa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<group name="Group1">
@@ -119,11 +118,9 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="161" y="2" width="50" height="26" uuid="9e80f119-cd29-4512-a64b-f4a20ed2f9d9"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Times New Roman"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{ticket}]]></textFieldExpression>
+					<reportElement x="310" y="2" width="70" height="26" uuid="06b34166-8001-447a-85e7-0cc05d00ac20"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{fechacom}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="211" y="2" width="100" height="26" uuid="743f3a70-936f-4a45-a3db-6a90c6e46715"/>
@@ -131,11 +128,6 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 						<font fontName="Times New Roman"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="310" y="2" width="70" height="26" uuid="06b34166-8001-447a-85e7-0cc05d00ac20"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="381" y="2" width="59" height="26" uuid="d8d3a466-014b-4019-8d0b-31b92c69e788"/>
@@ -149,7 +141,7 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Times New Roman"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{idempleado}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{idusuario}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="500" y="2" width="53" height="26" uuid="3c7bbd27-8d5b-4047-a249-a1da8d29cba7"/>
@@ -158,29 +150,36 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{idempresa}]]></textFieldExpression>
 				</textField>
+				<textField>
+					<reportElement x="161" y="2" width="50" height="26" uuid="9e80f119-cd29-4512-a64b-f4a20ed2f9d9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ticket}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>
 	<group name="proveedor">
 		<groupExpression><![CDATA[$F{proveedor}]]></groupExpression>
 	</group>
-	<group name="ticket">
-		<groupExpression><![CDATA[$F{ticket}]]></groupExpression>
+	<group name="fecha">
+		<groupExpression><![CDATA[$F{fechacom}]]></groupExpression>
 	</group>
 	<group name="observaciones">
 		<groupExpression><![CDATA[$F{observaciones}]]></groupExpression>
 	</group>
-	<group name="fecha">
-		<groupExpression><![CDATA[$F{fecha}]]></groupExpression>
-	</group>
 	<group name="total">
 		<groupExpression><![CDATA[$F{total}]]></groupExpression>
 	</group>
-	<group name="idempleado">
-		<groupExpression><![CDATA[$F{idempleado}]]></groupExpression>
+	<group name="idusuario">
+		<groupExpression><![CDATA[$F{idusuario}]]></groupExpression>
 	</group>
 	<group name="idempresa">
 		<groupExpression><![CDATA[$F{idempresa}]]></groupExpression>
+	</group>
+	<group name="ticket">
+		<groupExpression><![CDATA[$F{ticket}]]></groupExpression>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
@@ -189,13 +188,13 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 		<band height="132" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout"/>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="95" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
 				<staticText>
-					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<reportElement style="SubTitle" x="150" y="60" width="143" height="29" forecolor="#FFB31C" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
 					<textElement>
 						<font size="22" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Tu mejor opción en carnes]]></text>
+					<text><![CDATA[Super Japones]]></text>
 				</staticText>
 				<textField>
 					<reportElement x="2" y="0" width="438" height="57" forecolor="#FFFFFF" uuid="aa5923cd-96df-4b37-9bda-9e18d1ef07f9"/>
@@ -204,21 +203,21 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{razonsocial}]]></textFieldExpression>
 				</textField>
+				<image>
+					<reportElement x="157" y="0" width="128" height="66" printWhenGroupChanges="fecha" uuid="b4230fe2-ce31-49c4-86da-64c71a971985"/>
+					<imageExpression><![CDATA["himawari.png"]]></imageExpression>
+				</image>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#FFA31A" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<reportElement x="401" y="6" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
-			<image>
-				<reportElement x="451" y="0" width="104" height="95" uuid="b4230fe2-ce31-49c4-86da-64c71a971985"/>
-				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -242,11 +241,11 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 				<text><![CDATA[Proveedor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="160" y="2" width="51" height="28" uuid="87530803-e160-47cb-aed5-eb0378adcc01"/>
+				<reportElement x="311" y="2" width="69" height="28" uuid="5becb5bc-670d-43ed-9501-8189c693bef4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
-				<text><![CDATA[Ticket]]></text>
+				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="2" width="100" height="28" uuid="a6b16878-8741-415a-b868-262f49d9c086"/>
@@ -254,13 +253,6 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<text><![CDATA[Observaciónes]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="311" y="2" width="69" height="28" uuid="5becb5bc-670d-43ed-9501-8189c693bef4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Times New Roman"/>
-				</textElement>
-				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="380" y="2" width="60" height="28" uuid="aa8d658d-3a3a-414f-8468-e5415b207b49"/>
@@ -282,6 +274,13 @@ from compras, empresas where compras.idempresa = $P{idempresa}]]>
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<text><![CDATA[Id Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="2" width="51" height="28" uuid="87530803-e160-47cb-aed5-eb0378adcc01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Ticket]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

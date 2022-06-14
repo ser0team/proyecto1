@@ -32,7 +32,7 @@ public class compras {
     TableRowSorter trsFiltro;
     
     public void jbguardar(int idproveedor, String proveedor, JDateChooser fechacom, String observaciones, 
-           double total, int idusuario, int idempresa, int idempleado){
+           double total, int idusuario, int idempresa, int idempleado, String ticket){
         try{                                    
             cc.conexionMySql("127.0.0.1", "3306", "root", "Root.12!");
             
@@ -43,9 +43,10 @@ public class compras {
             gs.setFechacom(date);
             gs.setObservaciones(observaciones);
             gs.setTotal(total);
-            gs.setIdusuario(idusuario);
-            gs.setIdempleado(idempleado);
+            gs.setIdusuario(idusuario); 
             gs.setIdempresa(idempresa);
+            gs.setIdempleado(idempleado);
+            gs.setTicket(ticket);
             String sql = "insert into compras(idproveedor"
                     + ", proveedor"
                     + ", fechacom"
@@ -54,6 +55,7 @@ public class compras {
                     + ", idusuario"
                     + ", idempresa)"
                     + ", idempleado)"
+                     + ", ticket)"
                     + "values('"+gs.getIdproveedor()
                     +"','"+gs.getProveedor()
                     +"','"+gs.getFechacom()
@@ -62,6 +64,7 @@ public class compras {
                     +"','"+gs.getIdusuario()
                     +"','"+gs.getIdempresa()
                     +"','"+gs.getIdempleado()
+                    +"','"+gs.getTicket()
                     +"')";                
             cc._callablestatement(sql);
             cc._executeProcedure();
@@ -89,7 +92,7 @@ public class compras {
     }
     
     public void jbguardarProductos(int idCompra, int idproducto, String producto, 
-            int cantidad, String unidad, double precio, int idempleado, int idempresa){
+            int cantidad, String unidad, double precio, int idusuario, int idempresa, String ticket){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
             gs.setIdcompra(idCompra);            
@@ -97,8 +100,10 @@ public class compras {
             gs.setProducto(producto);
             gs.setCantidad(cantidad);
             gs.setUnidad(unidad);
-            gs.setPrecio(precio);            
+            gs.setPrecio(precio);  
+            gs.setIdusuario(idusuario); 
             gs.setIdempresa(idempresa);
+            gs.setTicket(ticket);
             String sql = "insert into compras_producto(idcompra, idproducto, producto, "
                     + "cantidad, unidad, precio, idempleado, idempresa)"
                     + "values('"+gs.getIdcompra()                    
@@ -107,8 +112,9 @@ public class compras {
                     +"','"+gs.getCantidad()
                     +"','"+gs.getUnidad()
                     +"','"+gs.getPrecio()
-                    +"','"+gs.getIdempleado()
+                    +"','"+gs.getIdusuario()
                     +"','"+gs.getIdempresa()
+                    +"','"+gs.getTicket()
                     +"')";
             cc._callablestatement(sql);
             cc._executeProcedure();
@@ -121,7 +127,7 @@ public class compras {
     public void jbcancelar(JTextField jtxtproveedor,
             JTextField jtxtproducto, JTextField jtxtprecio, JTextField jtxtcantidad,
             JTextField jtxtunidad, JTextArea jtxtobservaciones, JDateChooser jdcfecha,
-            JTextField jltotal){
+            JTextField jltotal, JTextField jtxtticket){
         try{
             jtxtproveedor.setText("");
             jtxtproducto.setText("");
@@ -131,6 +137,7 @@ public class compras {
             jtxtobservaciones.setText("");
             jdcfecha.setDate(null);
             jltotal.setText("0.00");
+            jtxtticket.setText("");
         }catch(Exception ex){
             jtm.jTextAreaError("ERROR: Cancel procedure 006. "+ex.getMessage(), ex);
         }
@@ -167,10 +174,11 @@ public class compras {
             dtm.addColumn("Proveedor");
             dtm.addColumn("Fecha");
             dtm.addColumn("Observaciónes");
+            dtm.addColumn("Total");  
             dtm.addColumn("Usuario");
-            dtm.addColumn("Total");           
             dtm.addColumn("Id Empleado");
             dtm.addColumn("Id Empresa");
+            dtm.addColumn("Ticket");
             jtable.setModel(dtm);
             
             String sql;
@@ -206,6 +214,7 @@ public class compras {
                     datos[6] = cc._resultSet().getString(7);
                     datos[7] = cc._resultSet().getString(8);
                     datos[8] = cc._resultSet().getString(9); 
+                    datos[9] = cc._resultSet().getString(10);
                     dtm.addRow(datos);
                 }
             }cc.desconectar();
@@ -215,21 +224,22 @@ public class compras {
     }
     
    public void actualizarCompra(int idproveedor, String proveedor, JDateChooser jdcfecha,
-           String observaciones, int idempleado, int idempresa, 
+           String observaciones, int idempleado, int idempresa, String ticket, 
            int idcompra){
        try{
            
            java.sql.Date date = new java.sql.Date(jdcfecha.getDate().getTime());
            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-           String fecha = df.format(date);
+           String fechacom = df.format(date);
            
            cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
            gs.setIdproveedor(idproveedor);
            gs.setProveedor(proveedor);
-           gs.setObservaciones(observaciones);
            gs.setFechacom(date);
+           gs.setObservaciones(observaciones);
            gs.setIdempleado(idempleado);
            gs.setIdempresa(idempresa);
+           gs.setTicket(ticket);
            gs.setIdcompra(idcompra);           
            String sql = "update compras set idproveedor='"+gs.getIdproveedor()
                    +"', proveedor='"+gs.getProveedor()
@@ -237,6 +247,7 @@ public class compras {
                    +"', observaciones='"+gs.getObservaciones()
                    +"', idempleado='"+gs.getIdempleado()
                    +"', idempresa='"+gs.getIdempresa()
+                   +"', ticket='"+gs.getTicket()
                    +"' where idcompra='"+gs.getIdcompra()
                    +"' and idempresa='"+gs.getIdempresa()+"'";
            cc._callablestatement(sql);
@@ -248,18 +259,19 @@ public class compras {
     }
    
    public void jbcancelarCompra(JTextField jtxtproveedor, 
-           JTextArea jtxtobservaciones, JDateChooser jdcfecha){
+           JTextArea jtxtobservaciones, JDateChooser jdcfecha, JTextField jtxtticket){
        try{
            jtxtproveedor.setText("");
            jtxtobservaciones.setText("");
            jdcfecha.setDate(null);
+           jtxtticket.setText("");
        }catch(Exception ex){
            jtm.jTextAreaError("ERROR: Clean procedure 010. "+ex.getMessage(), ex);
        }
    }  
    
-   public void jbmodificar(int idproveedor, String proveedor, String ticket, 
-           String observaciones, JDateChooser jdcfecha, int idempleado, int idempresa, 
+   public void jbmodificar(int idproveedor, String proveedor, 
+           String observaciones, JDateChooser jdcfecha, int idempleado, int idempresa, String ticket,
            int idcompra){
        try{
            cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");
@@ -272,6 +284,7 @@ public class compras {
            gs.setFechacom(_fecha);
            gs.setIdempleado(idempleado);
            gs.setIdempresa(idempresa);
+           gs.setTicket(ticket);
            gs.setIdcompra(idcompra);
            String sql = "update compras set idproveedor='"+gs.getIdproveedor()
                    +"', proveedor='"+gs.getProveedor()
@@ -279,6 +292,7 @@ public class compras {
                    +"', fechacom='"+gs.getFechacom()
                    +"', idempleado='"+gs.getIdempleado()
                    +"', idempresa='"+gs.getIdempresa()
+                   +"', ticket='"+gs.getTicket()
                    +" where idcompra='"+gs.getIdcompra()
                    +"' and idempresa='"+gs.getIdempresa()+"'";
            cc._callablestatement(sql);

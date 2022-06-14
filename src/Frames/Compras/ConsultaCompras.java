@@ -575,15 +575,15 @@ public class ConsultaCompras extends javax.swing.JFrame {
             jtm.jTextAreaMessage("Existen valores nulos");
         }else{
             comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha, 
-                    jtxtobservaciones.getText(), idcompra, Menu.idusu, Menu.idcompania);
-            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
+                    jtxtobservaciones.getText(), idcompra, Menu.idusu,jtxtticket.getText(), Menu.idcompania);
+            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha, jtxtticket);
         }
         
     }//GEN-LAST:event_jmi_guardarActionPerformed
 
     private void jmi_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cancelarActionPerformed
 
-         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
+         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha, jtxtticket);
          comp.muestraCompras(jtcompra, "", jdcde, jdchasta, Menu.idcompania);
          comp.total(jtcompra, jtxttotal);
         
@@ -728,7 +728,7 @@ public class ConsultaCompras extends javax.swing.JFrame {
 
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
 
-         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
+         comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha,jtxtticket);
          comp.muestraCompras(jtcompra, "", jdcde, jdchasta, Menu.idcompania);
          comp.total(jtcompra, jtxttotal);
                  
@@ -741,8 +741,8 @@ public class ConsultaCompras extends javax.swing.JFrame {
             jtm.jTextAreaMessage("Existen valores nulos");
         }else{
             comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha, 
-                    jtxtobservaciones.getText(), idcompra, Menu.idusu, Menu.idcompania);
-            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha);
+                    jtxtobservaciones.getText(), idcompra, Menu.idusu, jtxtticket.getText(), Menu.idcompania);
+            comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha,jtxtticket);
         }
         
     }//GEN-LAST:event_jbguardarActionPerformed
