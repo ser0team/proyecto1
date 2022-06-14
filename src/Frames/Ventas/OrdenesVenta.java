@@ -6,9 +6,12 @@
 package Frames.Ventas;
 
 import C.Funciones.CheckAccess;
+import C.Funciones.Instancias;
 import C.Funciones.f_ExportarExcel;
 import C.Ventas.ordenesventa;
 import Frames.Menu;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -20,6 +23,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
     JTableHeader th, th1;
     CheckAccess cha = new CheckAccess();
     ordenesventa ordven = new ordenesventa();
+    Instancias inst = new Instancias();
 
     /**
      * Creates new form OrdenesVenta
@@ -67,6 +71,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jtxtprecio = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -88,6 +93,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Himawari[Ordenes de Venta]");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jToolBar1.setRollover(true);
 
@@ -180,6 +190,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton7);
         jToolBar1.add(jSeparator8);
 
@@ -190,6 +205,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton8.setText("Platillo:");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Cantidad:");
 
@@ -202,6 +222,8 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
         jLabel6.setText("Precio:");
 
+        jButton11.setText("Modificar Platillos");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -209,9 +231,6 @@ public class OrdenesVenta extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton9))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -221,7 +240,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtxtplatillo)
                             .addComponent(jtxtprecio)
-                            .addComponent(jtxtcantidad, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jtxtcantidad, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addComponent(jButton11)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -239,9 +262,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtxtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jButton9)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton11))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -263,7 +288,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -310,6 +335,11 @@ public class OrdenesVenta extends javax.swing.JFrame {
         jchkestatus.setText("Estatus");
 
         jButton10.setText("Id OV:");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jtxtordenventa.setEditable(false);
 
@@ -328,7 +358,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jfecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jtxtmesa)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jchkestatus)
@@ -404,7 +434,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 875, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,7 +448,14 @@ public class OrdenesVenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+
+        ordven.agregarPlatillo(Integer.parseInt(jtxtplatillo.getText()), 
+                Double.parseDouble(jtxtprecio.getText()), 
+                Integer.parseInt(jtxtcantidad.getText()), 
+                Menu.idusu, 
+                Menu.idcompania);
+        ordven.limpiarPlatillos(jtxtplatillo, jtxtprecio, jtxtcantidad);
+        
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -465,6 +502,31 @@ public class OrdenesVenta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jtxtbuscarKeyReleased
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+        Instancias._ordenesventa = null;
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+        Instancias._ordenesventa = null;
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        
+        inst.getInstanciaListarOrdenesVenta();
+        
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        inst.getInstanciaListarPlatillos();
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -494,6 +556,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new OrdenesVenta().setVisible(true);
             }
@@ -503,6 +566,7 @@ public class OrdenesVenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -542,9 +606,17 @@ public class OrdenesVenta extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtbuscar;
     private javax.swing.JTextField jtxtcantidad;
     private javax.swing.JTextField jtxtmesa;
-    private javax.swing.JTextField jtxtordenventa;
+    public static javax.swing.JTextField jtxtordenventa;
     private javax.swing.JTextField jtxtotal;
-    private javax.swing.JTextField jtxtplatillo;
+    public static javax.swing.JTextField jtxtplatillo;
     private javax.swing.JTextField jtxtprecio;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Image getIconImage() {
+       Image retValue = Toolkit.getDefaultToolkit().
+             getImage(ClassLoader.getSystemResource("Imagenes/usuario.png"));
+
+       return retValue;
+    }
 }
