@@ -52,7 +52,6 @@ public class Corte extends javax.swing.JFrame {
         chk.revisarAccesoCorte(Menu.idusu);
         cor.muestraCortes(jtcortes, "", "",Menu.idcompania);
     }
-    
     corte cor = new corte();
 
     /**

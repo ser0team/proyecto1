@@ -16,7 +16,6 @@ public class gs_caja {
     public int getIdempresa() {
         return idempresa;
     }
-
     public void setIdempresa(int idempresa) {
         this.idempresa = idempresa;
     }
@@ -24,17 +23,16 @@ public class gs_caja {
     public int getIusuario() {
         return idusuario;
     }
-
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
+    
     Double caja;
     String fecha;
 
     public int getIdcaja() {
         return idcaja;
     }
-
     public void setIdcaja(int idcaja) {
         this.idcaja = idcaja;
     }
@@ -42,7 +40,6 @@ public class gs_caja {
     public Double getCaja() {
         return caja;
     }
-
     public void setCaja(Double caja) {
         this.caja = caja;
     }
@@ -50,9 +47,7 @@ public class gs_caja {
     public String getFecha() {
         return fecha;
     }
-
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
 }

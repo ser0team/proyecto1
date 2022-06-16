@@ -24,8 +24,7 @@ public class caja {
     
     public void jbguardar(double caja, String fecha, int idusuario, int idempresa){
         try{
-            cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");     
-            
+            cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");               
             gs.setCaja(caja);
             gs.setFecha(fecha);
             gs.setIdusuario(idusuario);

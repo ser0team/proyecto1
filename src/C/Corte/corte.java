@@ -35,7 +35,7 @@ public class corte {
             cc._executeProcedureSelect();
             cc._resultSet();
 
-            while(cc._resultSet().next()){                
+            while(cc._resultSet().next()){       
                 jlcaja.setText(cc._resultSet().getString(1));                
                 caja = cc._resultSet().getDouble(1);
                 System.out.println(String.valueOf("Caja: "+caja));
@@ -87,7 +87,7 @@ public class corte {
             cc._executeProcedureSelect();
             cc._resultSet();
 
-            while(cc._resultSet().next()){                
+            while(cc._resultSet().next()){             
                 jltotal.setText(cc._resultSet().getString(2));                    
                 total = cc._resultSet().getDouble(2);
                 System.out.println(total);
@@ -199,7 +199,6 @@ public class corte {
                 sql = "select * from cortes where fechacorte between '"+_fde+"' and '"+_fhasta
                         +"' idempresa='"+idempresa+"'";
             }
-
             cc._callablestatement(sql);
             cc._executeProcedureSelect();
             cc._resultSet();

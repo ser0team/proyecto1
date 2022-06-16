@@ -18,7 +18,6 @@ public class gs_corte {
     public int getIdempresa() {
         return idempresa;
     }
-
     public void setIdempresa(int idempresa) {
         this.idempresa = idempresa;
     }
@@ -29,7 +28,6 @@ public class gs_corte {
     public Date getFechacom() {
         return fechacom;
     }
-
     public void setFechacom(Date fechacom) {
         this.fechacom = fechacom;
     }
@@ -37,7 +35,6 @@ public class gs_corte {
     public int getIdcorte() {
         return idcorte;
     }
-
     public void setIdcorte(int idcorte) {
         this.idcorte = idcorte;
     }
@@ -45,7 +42,6 @@ public class gs_corte {
     public int getIdusuario() {
         return idusuario;
     }
-
     public void setIdusuario(int idusuario) {
         this.idusuario = idusuario;
     }
@@ -53,7 +49,6 @@ public class gs_corte {
     public double getCorte() {
         return corte;
     }
-
     public void setCorte(double corte) {
         this.corte = corte;
     }
@@ -61,9 +56,7 @@ public class gs_corte {
     public Date getFechacorte() {
         return fechacorte;
     }
-
     public void setFechacorte(Date fechacorte) {
         this.fechacorte = fechacorte;
     }
-    
 }
