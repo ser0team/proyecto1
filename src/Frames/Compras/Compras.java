@@ -697,7 +697,7 @@ public class Compras extends javax.swing.JFrame {
                 
                 comp.jbguardar(idproveedor, 
                         jtxtproveedor.getText(), 
-                        jdcfecha, 
+                        jdcfecha,
                         jtxtobservaciones.getText(),                        
                         Double.parseDouble(jltotal.getText()),                      
                         Menu.idusu,

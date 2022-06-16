@@ -35,7 +35,6 @@ public class compras {
            double total, int idusuario, int idempresa, int idempleado, String ticket){
         try{                                    
             cc.conexionMySql("127.0.0.1", "3306", "root", "Root.12!");
-            
             java.sql.Date date = new java.sql.Date(fechacom.getDate().getTime());
             
             gs.setIdproveedor(idproveedor);
@@ -65,7 +64,7 @@ public class compras {
                     +"','"+gs.getIdempresa()
                     +"','"+gs.getIdempleado()
                     +"','"+gs.getTicket()
-                    +"')";                
+                    +"')";    
             cc._callablestatement(sql);
             cc._executeProcedure();
             cc.desconectar();            
@@ -73,7 +72,6 @@ public class compras {
             jtm.jTextAreaError("ERROR: Insert procedure 001. "+ex.getMessage(), ex);
         }
     }
-    
     public int obtenerCompra(int idempresa){
         try{
             cc.conexionMySql("127.0.0.1", "3306", "root", "tittan");            

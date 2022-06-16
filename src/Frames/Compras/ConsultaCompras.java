@@ -574,7 +574,7 @@ public class ConsultaCompras extends javax.swing.JFrame {
                 || jdcfecha.getDate() == null || String.valueOf(idcompra).equals("")){
             jtm.jTextAreaMessage("Existen valores nulos");
         }else{
-            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha, 
+            comp.actualizarCompra(idproveedor, jtxtproveedor.getText(), jdcfecha,
                     jtxtobservaciones.getText(), idcompra, Menu.idusu,jtxtticket.getText(), Menu.idcompania);
             comp.jbcancelarCompra(jtxtproveedor, jtxtobservaciones, jdcfecha, jtxtticket);
         }
