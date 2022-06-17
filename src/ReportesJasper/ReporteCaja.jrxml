@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteCaja" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Fenix"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="himawari"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -14,11 +14,10 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="idempresa" class="java.lang.Integer"/>
-	<parameter name="logo" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[select caja.idcaja, caja.caja, caja.fecha, caja.idempleado, 
-caja.idempresa, empresas.razonsocial 
-from caja, empresas where caja.idempresa = 1]]>
+		<![CDATA[select caja.idcaja, caja.caja, caja.fecha, caja.idusuario, 
+caja.idempresa, empresa.razonsocial 
+from caja, empresa where caja.idempresa = $P{idempresa}]]>
 	</queryString>
 	<field name="idcaja" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="idcaja"/>
@@ -38,9 +37,9 @@ from caja, empresas where caja.idempresa = 1]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="caja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="idempleado" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="idempleado"/>
-		<property name="com.jaspersoft.studio.field.label" value="idempleado"/>
+	<field name="idusuario" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idusuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="idusuario"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="caja"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -99,7 +98,7 @@ from caja, empresas where caja.idempresa = 1]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{idempleado}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{idusuario}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="480" y="4" width="75" height="26" uuid="4b4bb230-34ca-40e8-81e8-7311a36d5ebb"/>
@@ -115,7 +114,7 @@ from caja, empresas where caja.idempresa = 1]]>
 		<groupExpression><![CDATA[$F{fecha}]]></groupExpression>
 	</group>
 	<group name="idempleado">
-		<groupExpression><![CDATA[$F{idempleado}]]></groupExpression>
+		<groupExpression><![CDATA[$F{idusuario}]]></groupExpression>
 	</group>
 	<group name="idempresa">
 		<groupExpression><![CDATA[$F{idempresa}]]></groupExpression>
@@ -128,37 +127,39 @@ from caja, empresas where caja.idempresa = 1]]>
 	</background>
 	<title>
 		<band height="132" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="95" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
 				<staticText>
-					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<reportElement style="SubTitle" x="230" y="10" width="200" height="29" forecolor="#FFB31C" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
 					<textElement>
-						<font fontName="SansSerif" size="22" isBold="false"/>
+						<font size="22" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Tu mejor opción en carnes]]></text>
+					<text><![CDATA[Super Japonés]]></text>
 				</staticText>
-				<textField>
-					<reportElement x="0" y="0" width="451" height="66" forecolor="#FFFFFF" uuid="d767e5bc-0b55-4800-bc23-f3c7e7f8c35a"/>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="SansSerif" size="35"/>
+				<image>
+					<reportElement x="41" y="0" width="158" height="89" printWhenGroupChanges="fecha" uuid="b4230fe2-ce31-49c4-86da-64c71a971985"/>
+					<imageExpression><![CDATA["himawarit.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement style="SubTitle" x="230" y="45" width="200" height="43" printWhenGroupChanges="fecha" forecolor="#030303" uuid="de585173-79f5-4e42-8563-e59b63795bab"/>
+					<textElement>
+						<font size="16" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{razonsocial}]]></textFieldExpression>
-				</textField>
+					<text><![CDATA[Teléfono:
+(462) 693-2334]]></text>
+				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#FFA31A" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<reportElement x="401" y="6" width="144" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
-			<image>
-				<reportElement x="451" y="0" width="104" height="95" uuid="dd8f2686-abb2-4ee8-a4b0-4dee8bc2d7fc"/>
-				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -185,14 +186,14 @@ from caja, empresas where caja.idempresa = 1]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="9"/>
 				</textElement>
-				<text><![CDATA[Id Empleado]]></text>
+				<text><![CDATA[ID Usuario]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="480" y="0" width="75" height="30" uuid="71adda9f-20e2-4757-9942-aae2ecee5071"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="9"/>
 				</textElement>
-				<text><![CDATA[Id Empresa]]></text>
+				<text><![CDATA[ID Empresa]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

@@ -33,7 +33,7 @@ public class reportes {
     Map<String,Object> parametro = null;
     HashMap hm = null;
     JasperViewer jv = null;        
-    String imagen="Imagenes/toro.png";
+    String imagen="Imagenes/himawari_logo.png";
     C.Conexion.Conexion cc = new C.Conexion.Conexion();
     JTextAreaMessages jtm = new JTextAreaMessages();
     
